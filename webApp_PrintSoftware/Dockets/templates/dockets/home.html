@@ -1,0 +1,17 @@
+{% extends "dockets/base.html" %}
+{% block content %}
+    <h1>Dockets</h1>
+    {% for docket in dockets %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#"> Representative: {{ docket.rep }} | Client: {{ docket.client }}</a>
+              <small class="text-muted">{{ docket.date }}</small>
+            </div>
+            <h4><a class="article-title" href="#">{{ docket.number }}</a></h4>
+            <p class="article-content">{{ docket.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
+
