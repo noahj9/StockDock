@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='dockets-home'),
-    path('new/', views.new, name='dockets-new'),
+    path('new/', views.newDocket, name='dockets-new'),
 ]
