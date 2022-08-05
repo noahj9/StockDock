@@ -20,3 +20,10 @@ cd C:\Users\user1\Documents\Projects\PrintSoftware
 .\Scripts\activate
 cd webApp_PrintSoftware
 python manage.py
+
+START with fresh database:
+Delete the sqlite database file (often db.sqlite3) in your django project folder (or wherever you placed it)
+Delete everything except __init__.py file from migration folder in all django apps
+Make changes in your models (models.py).
+Run the command python manage.py makemigrations or python3 manage.py makemigrations
+Then run the command python manage.py migrate.
