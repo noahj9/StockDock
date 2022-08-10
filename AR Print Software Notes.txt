@@ -1,0 +1,57 @@
+- each rep own login
+- each rep access to only there own dockets
+- Customer Name Field - should match the database exactly, so searchable field to autopopulate on partial or full search
+- redundant customer in the database - eliminate this!
+- integrate adding new client to docket form
+- list of customers and staff/who needs accounts
+- dropdown menu for Contact Name based on the customer name, so the people that work for the clients, make a dropdown so that we can choose who the job is for, or add a new contact
+	- should autopop the phone + email
+- terms field should be a dropwdown with options
+	- account
+	- COD
+- additional field: Customer PO
+	- purchase order number, textfield
+	- select N/A or fill out mandatory. software to prompt if they dont do one of these
+- deposit field dropdown - mandatory field
+	- 100%
+	- 50%
+	- n/a
+- auto populate based on whos logged in, with option to change via dropdown
+- new CSR field - print in brackets same as current
+- quote # - mandatory number field or N/A
+- quantity - mandatory field, numerical field
+- textfield mandatory, description
+- finished size, mandatory --> textfield or N/A
+- Stock --> spreadsheet with all existing stock, should be able to add to the database if needed
+- sheet size should autofill with the size of the stock
+- run size mandatory to fill out
+- Machine --> list of presses plus design (mandatory field)
+- run quantity locked empty field
+- Proof --> provided with list of proof options, locked dropdown menu
+- Inks --> list of inks corresponding to machines (link them)
+- add multiple machines, choose from dropdown
+- ink to choose from any machines u choose, keep inks in one field, seperate the numbers
+- Bindery --> write anything textfield, mandatory field or N/A
+- checkbox for N/A on all mandatory fields
+- special instructions --> textfield  not mandatory
+- price field --> mandatory entry
+- file --> same as price
+- shipping --> mandatory but anything same as price
+- when they select a deposit % open a new field to enter the deposit amount to be filled out later
+- spot at the bottom where stuff is removed, will become reception instructions (one rectangle box)
+
+ALL MANDATORY:
+- date in: pick from calendar
+- same for date required --> checkbox firm date or flexible (mandatory selection)
+date required highlighted in yellow
+terms and deposit to be highlighted in yellow
+
+Zunaid will send PDF of docket form
+
+popup asking how many dockets will be part of the order, print 1/3 or 1/howevermany, so basically can add multiple dockets to the order
+
+Support:
+who to contact in cases of downtime?
+compensation?
+
+
