@@ -1,4 +1,39 @@
 {% extends "dockets/base.html" %}
 {% block content %}
     <h1>New Docket Form</h1>
+    <br/><br/>
+    <form action="" method=POST>
+        {% csrf_token %}
+
+    <div class="form-group">
+        <h5>Customer and Docket Info</h5>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Customer Name: </label>
+                {{ form.customer_name  }}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Date: </label>
+                {{ form.date }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Date Req: </label>
+                {{ form.date_required  }}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Account: </label>
+                {{ form.account }}
+            </div>
+        </div>
+
+    </div>
+
+        <input type="submit" value="Create Docket" class="btn btn-success">
+
+
+    </form>
 {% endblock content %}
