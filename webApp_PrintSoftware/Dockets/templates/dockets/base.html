@@ -31,8 +31,14 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
+                  <a class="nav-item nav-link" href="#">Admin</a>
             </div>
           </div>
         </div>
@@ -43,6 +49,13 @@
     <main role="main" class="container-fluid">
         <div class="row">
         <div class="col-md-10">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
         <div class="col-md-2">

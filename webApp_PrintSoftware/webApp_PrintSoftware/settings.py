@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Dockets.apps.DocketsConfig',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'import_export',
-    'django_filters'
+    'django_filters',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' #template for crispy forms, compat. with boostrap 4
+
+LOGIN_REDIRECT_URL = 'dockets-home' #the page that appears after you login
+LOGIN_URL = 'login' #login page redirect
