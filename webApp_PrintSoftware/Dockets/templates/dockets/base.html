@@ -48,7 +48,7 @@
     <!-- Right Side Menu bar -->
     <main role="main" class="container-fluid">
         <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
@@ -58,7 +58,7 @@
             {% endif %}
             {% block content %}{% endblock %}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <br></br>
             <div class="content-section">
                 <center><h3>Menu</h3></center>
