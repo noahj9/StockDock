@@ -36,7 +36,7 @@ class NewDocketForm(ModelForm):
             'run_size_1': forms.TextInput(attrs={'class':'form-control'}),
             'proof_1': forms.TextInput(attrs={'class':'form-control'}),
             'inks_1': forms.TextInput(attrs={'class':'form-control'}),
-            'instructions_1': forms.TextArea(attrs={'class':'form-control'}),
+            'instructions_1': forms.TextInput(attrs={'class':'form-control'}),
             'bindery_1': forms.TextInput(attrs={'class':'form-control'}),
             'file_1': forms.TextInput(attrs={'class':'form-control'}),
             'price_comission_1': forms.TextInput(attrs={'class':'form-control'}),
