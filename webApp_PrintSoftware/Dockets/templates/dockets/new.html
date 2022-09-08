@@ -1,38 +1,166 @@
 {% extends "dockets/base.html" %}
 {% block content %}
-    <h1>New Docket Form</h1>
+    <center><h1>New Docket Form</h1></center>
     <br/><br/>
     <form action="" method=POST>
         {% csrf_token %}
 
-    <div class="form-group">
-        <h5>Customer and Docket Info</h5>
+    <div class="form-group wrapper">
 
+        <h5>Customer and Docket Info</h5>
+        <p></p>
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label>Customer Name: </label>
                 {{ form.customer_name  }}
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label>Date: </label>
                 {{ form.date }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Date Req: </label>
+                {{ form.date_required  }}
             </div>
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Date Req: </label>
-                {{ form.date_required  }}
-            </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label>Account: </label>
                 {{ form.account }}
             </div>
         </div>
 
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Contact: </label>
+                {{ form.contact }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Phone: </label>
+                {{ form.phone }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Email: </label>
+                {{ form.email }}
+            </div>
+        </div>
+
+        <h5>Payment and Sales</h5>
+        <p></p>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Customer PO: </label>
+                {{ form.customer_PO  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Deposit: </label>
+                {{ form.deposit }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Sales Rep: </label>
+                {{ form.rep  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>CSR: </label>
+                {{ form.csr }}
+            </div>
+        </div>
+
+        <h5>Job Details (mandatory section)</h5>
+        <p></p>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Quantity: </label>
+                {{ form.quantity_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Description: </label>
+                {{ form.description_1 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Finished Size: </label>
+                {{ form.finished_size_1  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Machine: </label>
+                {{ form.machine_1 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Run Quantity: </label>
+                {{ form.run_quantity_1  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Sheet Size: </label>
+                {{ form.sheet_size_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Run Size: </label>
+                {{ form.run_size_1 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Proof: </label>
+                {{ form.proof_1  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Inks: </label>
+                {{ form.inks_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Bindery: </label>
+                {{ form.bindery_1 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>File: </label>
+                {{ form.file_1  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Instructions: </label>
+                {{ form.instructions_1 }}
+            </div>
+        </div>
+
+        <h5>Pricing and Shipping</h5>
+        <p></p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Pricing: </label>
+                {{ form.price_comission_1  }}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Shipping: </label>
+                {{ form.shipping_1 }}
+            </div>
+        </div>
+
+
+
+    
+
+
     </div>
 
         <input type="submit" value="Create Docket" class="btn btn-success">
+        <br></br>
 
 
     </form>
