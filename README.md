@@ -1,6 +1,9 @@
 # PrintSoftware
 AR print software
 
+Python version 3.10.1: https://www.python.org/downloads/release/python-3101/
+
+
 
 HOW TO START:
 
@@ -10,6 +13,9 @@ run activate through scripts: .\Scripts\activate (this activates the virtual env
 
 navigate to subfolder
 use manage.py
+
+python manage.py makemigrations
+python manage.py migrate
 
 python manage.py runserver (this runs the dev server)
 
