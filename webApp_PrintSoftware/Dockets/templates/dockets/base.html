@@ -14,12 +14,12 @@
 
 
 
-    <title>Docket Management</title>
+    <title>StockDock - Dockets</title>
 </head>
 <body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <img src="{% static 'assets/logo_black.png' %}" alt="AR_Logo">
+        <img src="{% static 'assets/logo.png' %}" style="max-width:50px" alt="AR_Logo">
         <div class="container">
             <!--
           <a class="navbar-brand mr-4" href="{% url 'dockets-home' %}">AR Print Software</a>
@@ -31,12 +31,17 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'dockets-home' %}">Dockets</a>
               <a class="nav-item nav-link" href="/about">Client DB</a>
-              <a class="nav-item nav-link" href="">Service Portal</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
+                  <a class="nav-item nav-link" href="#">Admin</a>
             </div>
           </div>
         </div>
@@ -44,26 +49,43 @@
     </header>
 
     <!-- Right Side Menu bar -->
-    <main role="main" class="container">
+    <main role="main" class="container-fluid">
         <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <br></br>
             <div class="content-section">
-                <h3>Menu</h3>
-                <p class='text-muted'>Docket Management Options
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">New Docket</li>
-                    <li class="list-group-item list-group-item-light">Edit Docket</li>
-                    <li class="list-group-item list-group-item-light">Delete Docket</li>
-                    <li class="list-group-item list-group-item-light">Duplicate Docket</li>
-                </ul>
+                <center><h3>Menu</h3></center>
+                <p class='text-muted'>
+                <div class="list-group" id="menu">
+                    <a href="{% url 'dockets-new' %}" class="list-group-item menu-link list-group-item-success">New Docket</a>
+                    <a class="list-group-item menu-link list-group-item-primary">Edit Docket</a>
+                    <a class="list-group-item menu-link list-group-item-primary">Duplicate Docket</a>
+                    <a class="list-group-item menu-link list-group-item-danger">Delete Docket</a>
+                </div>
                 </p>
             </div>
         </div>
         </div>
     </main>
+
+<footer class="bg-dark text-center text-white">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: black;">
+    © 2022 Copyright:
+    <a class="text-white" href="https://github.com/noahj9">Noah Jina</a>
+  </div>
+  <!-- Copyright -->
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
