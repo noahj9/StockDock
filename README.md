@@ -19,8 +19,12 @@ Python version 3.10.1: https://www.python.org/downloads/release/python-3101/
 3. python manage.py migrate
 4. python manage.py runserver (this runs the dev server)
 
+### NOTES FOR ZUNAID
+1. Do we want database backups daily?
+2. If there are multiple jobs as part of a docket how will this translate to the printed out pdf docket? New pdf docket for each job?
+3. 
 
-CODE TO RUN FOR NOAH: (oin main PC)
+### CODE TO RUN FOR NOAH: (oin main PC)
 
 cd C:\Users\user1\Documents\Projects\PrintSoftware
 .\Scripts\activate
