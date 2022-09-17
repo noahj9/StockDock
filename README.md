@@ -3,6 +3,10 @@
 
 Python version 3.10.1: https://www.python.org/downloads/release/python-3101/
 
+### RESOURCES:
+1. Forms: https://stackoverflow.com/questions/20219113/nested-forms-with-django
+
+
 
 
 ### HOW TO START:
