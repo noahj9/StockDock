@@ -3,9 +3,10 @@
 <br></br>
     <form method="get">
     {{myFilter.form}}
-    <button class="btn btn-primary" type="submit">Search</button>
+    <button class="btn btn-primary float-right m-2" type="submit">Search</button>
     <br></br>
   </form>
+  <!-- Docket display table -->
     <div class="table-wrapper-scroll-y my-customer-scrollbar">
     <table class="table table-striped table-bordered table-hover">
       <caption>List of Dockets</caption>
@@ -15,6 +16,9 @@
             <th scope="col">Client</th>
             <th scope="col">Rep</th>
             <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +28,9 @@
             <td>{{ docket.customer_name }}</td>
             <td>{{ docket.rep }}</td>
             <td>{{ docket.date }}</td>
+            <td>{{ docket.description_1 }}</td>
+            <td><a class="btn btn-sm btn-info" href="{% url 'dockets-update' docket.id %}">Edit</a></td>
+            <td><a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a></td>
           </tr>
         {% endfor %}
         </tbody>

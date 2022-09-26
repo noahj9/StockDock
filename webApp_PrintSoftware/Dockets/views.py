@@ -15,17 +15,36 @@ def home(request): #passes dockets to the page and creates a query set which can
 
 @login_required
 def newDocket(request): #new docket form view
-    submitted = False #has the form been submitted
+    form = NewDocketForm()
     if request.method == "POST": #if the method is post then post the request to the DB
         form = NewDocketForm(request.POST)
         if form._is_valid(): #check for validity
             form.save() #save form to DB\
-            return HttpResponseRedirect('/newDocket?submitted=True') #return a new HTTP response to pass submitte
-    else:
-        form = NewDocketForm
-        if 'submitted' in request.GET: #if submitted is in the response set it to true, form was submitted
-            submitted = True
+            return redirect('/')
 
-    return render(request, 'dockets/new.html', {'form':form, 'submitted':submitted}) #render the page
+    context = {'form':form}
+    return render(request, 'dockets/new.html', context) #render the page
+
+@login_required
+def updateDocket(request, pk):
+    docket = Docket.objects.get(id=pk)
+    form = NewDocketForm(instance=docket)
+
+    if request.method == "POST": #if the method is post then post the request to the DB
+        form = NewDocketForm(request.POST, instance=docket)
+        if form._is_valid(): #check for validity
+            form.save() #save form to DB\
+            return redirect('/')
+
+    context = {'form':form}
+    return render(request, 'dockets/new.html', context)
+
+@login_required
+def deleteDocket(request, pk):
+    docket = Docket.objects.get(id=pk)
+    if request.method =="POST":
+        docket.delete()
+    context = {'item':docket}
+    return render(request, 'dockets/delete.html', context)
 
 

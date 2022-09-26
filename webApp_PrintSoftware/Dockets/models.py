@@ -26,7 +26,7 @@ class Rep(models.Model):
     name = models.CharField(max_length=100)
     csr = models.ForeignKey(Csr, null = True, on_delete=models.SET_NULL) #foreign key means each rep can have a CSR, null means it isnt mandatory, on delete will set value to null instead of deletion
     def __str__(self):
-        return self.name
+        return self.name    
 
 
 class Docket(models.Model): #contains all the data for a docket to be stored in the database
@@ -59,36 +59,6 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     file_1 = models.CharField(max_length = 100)
     price_comission_1 = models.CharField(max_length = 100)
     shipping_1 = models.CharField(max_length = 100)
-    quantity_2 = models.CharField(max_length = 100, blank=True)
-    description_2 = models.CharField(max_length = 100, blank=True)
-    finished_size_2 = models.CharField(max_length = 100, blank=True)
-    stock_2 = models.CharField(max_length = 100, blank=True)
-    machine_2 = models.CharField(max_length = 100, blank=True)
-    run_quantity_2 = models.CharField(max_length = 100, blank=True)
-    sheet_size_2 = models.CharField(max_length = 100, blank=True)
-    run_size_2 = models.CharField(max_length = 100, blank=True)
-    proof_2 = models.CharField(max_length = 100, blank=True)
-    inks_2 = models.CharField(max_length = 100, blank=True)
-    instructions_2 = models.TextField(blank=True)
-    bindery_2 = models.CharField(max_length = 100, blank=True)
-    file_2 = models.CharField(max_length = 100, blank=True)
-    price_comission_2 = models.CharField(max_length = 100, blank=True)
-    shipping_2 = models.CharField(max_length = 100, blank=True)
-    quantity_3 = models.CharField(max_length = 100, blank=True)
-    description_3 = models.CharField(max_length = 100, blank=True)
-    finished_size_3 = models.CharField(max_length = 100, blank=True)
-    stock_3 = models.CharField(max_length = 100, blank=True)
-    machine_3 = models.CharField(max_length = 100, blank=True)
-    run_quantity_3 = models.CharField(max_length = 100, blank=True)
-    sheet_size_3 = models.CharField(max_length = 100, blank=True)
-    run_size_3 = models.CharField(max_length = 100, blank=True)
-    proof_3 = models.CharField(max_length = 100, blank=True)
-    inks_3 = models.CharField(max_length = 100, blank=True)
-    instructions_3 = models.TextField(blank=True)
-    bindery_3 = models.CharField(max_length = 100, blank=True)
-    file_3 = models.CharField(max_length = 100, blank=True)
-    price_comission_3 = models.CharField(max_length = 100, blank=True)
-    shipping_3 = models.CharField(max_length = 100, blank=True)
 
     def __int__(self):
         return self.id
