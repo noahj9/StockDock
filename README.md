@@ -6,6 +6,8 @@ Python version 3.10.1: https://www.python.org/downloads/release/python-3101/
 ### RESOURCES:
 1. Forms: https://stackoverflow.com/questions/20219113/nested-forms-with-django
 2. PDF Filler: https://pypi.org/project/fillpdf/
+3. Edit a docket: https://editing-django-models-in-the-frontend.readthedocs.io/en/latest/topics/edit_any_django_model.html
+
 
 
 
