@@ -28,4 +28,3 @@ def newDocket(request): #new docket form view
 
     return render(request, 'dockets/new.html', {'form':form, 'submitted':submitted}) #render the page
 
-
