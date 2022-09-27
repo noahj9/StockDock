@@ -8,9 +8,12 @@ from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django_addanother.views import CreatePopupMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class ContactCreate(CreatePopupMixin, CreateView):
+class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
     model = Contact
     fields = ['name', 'phone', 'email', 'client']
 
@@ -20,10 +23,13 @@ def home(request): #passes dockets to the page and creates a query set which can
     docket_list = myFilter.qs
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
 
-@login_required
-class CreateDocket(CreatePopupMixin, CreateView):
+class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
     model = Docket
     form_class = NewDocketForm
+    def get_success_url(self):
+        return reverse('dockets-home')
 
 # @login_required
 # def newDocket(request): #new docket form view
@@ -49,7 +55,7 @@ def updateDocket(request, pk):
             return redirect('dockets-home')
 
     context = {'form':form}
-    return render(request, 'dockets/new.html', context)
+    return render(request, 'dockets/docket_form.html', context)
 
 @login_required
 def deleteDocket(request, pk):
