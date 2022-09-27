@@ -1,0 +1,12 @@
+{% extends "dockets/base.html" %}
+{% block content %}
+
+<form action="" method="POST">
+	{% csrf_token %}
+
+	{{ form.as_p }}
+	{{ form.media }}
+
+	<input type="submit" value="Save Contact">
+
+{% endblock content %}

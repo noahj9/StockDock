@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'import_export',
     'django_filters',
     'crispy_forms',
+    'django_addanother',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' #template for crispy forms, compat. with boo
 
 LOGIN_REDIRECT_URL = 'dockets-home' #the page that appears after you login
 LOGIN_URL = 'login' #login page redirect
+
+#SMTP Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'stockdocksoftware@gmail.com'
+EMAIL_HOST_PASSWORD = 'lnobitilznrlkpsi'
