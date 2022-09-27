@@ -20,7 +20,7 @@ def home(request): #passes dockets to the page and creates a query set which can
     docket_list = myFilter.qs
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
 
-class CreateDocket(CreateView):
+class CreateDocket(CreatePopupMixin, CreateView):
     model = Docket
     form_class = NewDocketForm
 
