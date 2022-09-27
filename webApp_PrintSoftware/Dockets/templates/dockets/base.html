@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" type="text/css" href="{% static 'dockets/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'dockets/form.css' %}">
@@ -19,29 +19,45 @@
 <body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <img src="{% static 'assets/logo.png' %}" style="max-width:50px" alt="AR_Logo">
-        <div class="container">
-            <!--
-          <a class="navbar-brand mr-4" href="{% url 'dockets-home' %}">AR Print Software</a>
-            -->
+        <div class="container-fluid">
+          <div class="col-sm-1">
+            <img src="{% static 'assets/logo.png' %}" style="max-width:50px" alt="AR_Logo">
+          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'dockets-home' %}">Dockets</a>
-              <a class="nav-item nav-link" href="/about">Client DB</a>
+            <div class="col-sm-9">
+              <!-- Navbar Left Side -->
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'dockets-home' %}">Dockets</a>
+                </li>
+              </ul>
             </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-                {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
-                  <a class="nav-item nav-link" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
-                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                {% else %}
-                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                {% endif %}
-                  <a class="nav-item nav-link" href="#">Admin</a>
+            <div class="col-sm-3 text-end">
+                <!-- Navbar Right Side -->
+                <ul class="navbar-nav">
+                  {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -49,7 +65,7 @@
     </header>
 
     <!-- Right Side Menu bar -->
-    <main role="main" class="container-fluid">
+    <main role="main" class="container-fluid min-vh-100">
         <div class="row">
         <div class="col-md-9">
             {% if messages %}
@@ -78,11 +94,11 @@
         </div>
     </main>
 
-<footer class="bg-dark text-center text-white">
+<footer class="bg-dark text-center text-white mt-auto mt-2">
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: black;">
     © 2022 Copyright:
-    <a class="text-white" href="https://github.com/noahj9">Noah Jina</a>
+    <a class="text-white" href="https://github.com/noahj9">Noah Jina & Felix Zheng</a>
   </div>
   <!-- Copyright -->
 </footer>
