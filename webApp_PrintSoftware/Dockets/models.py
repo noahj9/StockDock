@@ -28,42 +28,6 @@ class Rep(models.Model):
     def __str__(self):
         return self.name    
 
-
-class Docket(models.Model): #contains all the data for a docket to be stored in the database
-    customer_name = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
-    date = models.DateField(default=datetime.date.today) #custom field form widgets
-    date_required = models.DateField()
-    contact = models.ForeignKey(Contact, null = True, on_delete=models.SET_NULL)
-    account = models.CharField(max_length = 100)
-    phone = models.CharField(max_length = 100)
-    email = models.EmailField(max_length = 100)
-    terms = models.CharField(max_length = 100)
-    customer_PO = models.CharField(max_length = 100)
-    quote = models.CharField(max_length=100, null=True)
-    deposit = models.CharField(max_length = 100)
-    deposit_amount = models.CharField(max_length=100, blank=True, null=True)
-    rep = models.ForeignKey(Rep, null = True, on_delete=models.SET_NULL)
-    csr = models.ForeignKey(Csr, null = True, on_delete=models.SET_NULL)
-    quantity_1 = models.CharField(max_length = 100)
-    description_1 = models.CharField(max_length = 100)
-    finished_size_1 = models.CharField(max_length = 100)
-    stock_1 = models.CharField(max_length = 100)
-    machine_1 = models.CharField(max_length = 100)
-    run_quantity_1 = models.CharField(max_length = 100)
-    sheet_size_1 = models.CharField(max_length = 100)
-    run_size_1 = models.CharField(max_length = 100)
-    proof_1 = models.CharField(max_length = 100)
-    inks_1 = models.CharField(max_length = 100)
-    instructions_1 = models.TextField(blank=True)
-    bindery_1 = models.CharField(max_length = 100)
-    file_1 = models.CharField(max_length = 100)
-    price_comission_1 = models.CharField(max_length = 100)
-    shipping_1 = models.CharField(max_length = 100)
-
-    def __int__(self):
-        return self.id
-
-
 class Machine(models.Model):
     name = models.CharField(max_length=100)
     ink = models.BooleanField(default=True)
@@ -84,3 +48,39 @@ class Stock(models.Model):
     name = models.CharField(max_length=200)
     def __str__(self):
         return self.name
+
+class Docket(models.Model): #contains all the data for a docket to be stored in the database
+    customer_name = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
+    date = models.DateField(default=datetime.date.today) #custom field form widgets
+    date_required = models.DateField()
+    contact = models.ForeignKey(Contact, null = True, on_delete=models.SET_NULL)
+    account = models.CharField(max_length = 100)
+    phone = models.CharField(max_length = 100)  
+    email = models.EmailField(max_length = 100)
+    terms = models.CharField(max_length = 100)
+    customer_PO = models.CharField(max_length = 100)
+    quote = models.CharField(max_length=100, null=True)
+    deposit = models.CharField(max_length = 100)
+    deposit_amount = models.CharField(max_length=100, blank=True, null=True)
+    rep = models.ForeignKey(Rep, null = True, on_delete=models.SET_NULL)
+    csr = models.ForeignKey(Csr, null = True, on_delete=models.SET_NULL)
+    quantity_1 = models.CharField(max_length = 100)
+    description_1 = models.CharField(max_length = 100)
+    finished_size_1 = models.CharField(max_length = 100)
+    stock_1 = models.CharField(max_length = 100)
+    machine_1 = models.ManyToManyField(Machine)
+    run_quantity_1 = models.CharField(max_length = 100)
+    sheet_size_1 = models.CharField(max_length = 100)
+    run_size_1 = models.CharField(max_length = 100)
+    proof_1 = models.CharField(max_length = 100)
+    inks_1 = models.CharField(max_length = 100)
+    instructions_1 = models.TextField(blank=True)
+    bindery_1 = models.CharField(max_length = 100)
+    file_1 = models.CharField(max_length = 100)
+    price_comission_1 = models.CharField(max_length = 100)
+    shipping_1 = models.CharField(max_length = 100)
+
+    def __int__(self):
+        return self.id
+
+

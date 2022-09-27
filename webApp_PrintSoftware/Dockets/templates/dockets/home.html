@@ -17,8 +17,7 @@
             <th scope="col">Rep</th>
             <th scope="col">Date</th>
             <th scope="col">Description</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +28,12 @@
             <td>{{ docket.rep }}</td>
             <td>{{ docket.date }}</td>
             <td>{{ docket.description_1 }}</td>
-            <td><a class="btn btn-sm btn-info" href="{% url 'dockets-update' docket.id %}">Edit</a></td>
-            <td><a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a></td>
+            <td>
+              <a class="btn btn-sm btn-info mr-2" href="{% url 'dockets-update' docket.id %}">Edit</a>
+              <a class="btn btn-sm btn-dark mr-2" href="">Duplicate</a>
+              <a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a>
+              <a class="btn btn-sm btn-info ml-3" href="{% url 'dockets-print' docket.id %}">Print</a>
+            </td>
           </tr>
         {% endfor %}
         </tbody>
