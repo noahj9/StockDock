@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -29,7 +30,7 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     model = Docket
     form_class = NewDocketForm
     def get_success_url(self):
-        return reverse('dockets-home')
+        return reverse_lazy('dockets-home')
 
 # @login_required
 # def newDocket(request): #new docket form view
@@ -62,6 +63,7 @@ def deleteDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     if request.method =="POST":
         docket.delete()
+        return HttpResponseRedirect('/dockets')
     context = {'item':docket}
     return render(request, 'dockets/delete.html', context)
 
@@ -71,7 +73,7 @@ def printDocket(request, pk):
 
 
 # @login_required
-# def cloneDocket(request,pk):
+# def cloneDocket(request, pk):
 #     docket = Docket.objects.get(id=pk)
 #     form = NewDocketForm(instance=docket)
 
