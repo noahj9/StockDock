@@ -21,23 +21,12 @@ Python version 3.10.1: https://www.python.org/downloads/release/python-3101/
 4. run pip install -r requirements.txt (installs all dependencies)
 
 ### Using manage.py to setup and run the server
-
+### Make sure virtual environment is activated (see above)
 1. navigate to subfolder
 2. python manage.py makemigrations
 3. python manage.py migrate
 4. python manage.py runserver (this runs the dev server)
 
-### NOTES FOR ZUNAID
-1. Do we want database backups daily?
-2. If there are multiple jobs as part of a docket how will this translate to the printed out pdf docket? New pdf docket for each job?
-3. 
-
-### CODE TO RUN FOR NOAH: (oin main PC)
-
-cd C:\Users\user1\Documents\Projects\PrintSoftware
-.\Scripts\activate
-cd webApp_PrintSoftware
-python manage.py
 
 START with fresh database:
 1. Delete the sqlite database file (often db.sqlite3) in your django project folder (or wherever you placed it)
