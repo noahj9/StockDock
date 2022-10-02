@@ -55,8 +55,6 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     date_required = models.DateField()
     contact = models.ForeignKey(Contact, null = True, on_delete=models.SET_NULL)
     account = models.CharField(max_length = 100)
-    phone = models.CharField(max_length = 100)  
-    email = models.EmailField(max_length = 100)
     terms = models.CharField(max_length = 100)
     customer_PO = models.CharField(max_length = 100)
     quote = models.CharField(max_length=100, null=True)

@@ -8,7 +8,7 @@ urlpatterns = [
     path('updateDocket/<str:pk>/', views.updateDocket, name='dockets-update'),
     path('deleteDocket/<str:pk>/', views.deleteDocket, name='dockets-delete'),
     path('printDocket/<str:pk>/', views.printDocket, name='dockets-print'),
-    re_path(r'^create-contact/$', ContactCreate.as_view(), name='contact-create')
-    # path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
+    re_path(r'^create-contact/$', ContactCreate.as_view(), name='contact-create'),
+    path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
 ]
 

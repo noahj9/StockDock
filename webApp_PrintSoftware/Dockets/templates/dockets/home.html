@@ -31,7 +31,8 @@
             <td>{{ docket.description_1 }}</td>
             <td>
               <a class="btn btn-sm btn-info mr-2" href="{% url 'dockets-update' docket.id %}">Edit</a>
-              <a class="btn btn-sm btn-dark mr-2" href="">Duplicate</a>
+              <a class="btn btn-sm btn-dark mr-2" href="{% url 'dockets-clone' docket.id %}">Duplicate</a>
+              <a class="btn btn-sm btn-success mr-2" href="">Add Job</a>
               <a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a>
             </td>
             <td><a class="btn btn-sm btn-info" href="{% url 'dockets-print' docket.id %}">Print</a></td>

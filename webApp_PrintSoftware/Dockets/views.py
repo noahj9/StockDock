@@ -72,18 +72,10 @@ def printDocket(request, pk):
     docket = Docket.objects.get(id=pk)
 
 
-# @login_required
-# def cloneDocket(request, pk):
-#     docket = Docket.objects.get(id=pk)
-#     form = NewDocketForm(instance=docket)
-
-#     if request.method == "POST": #if the method is post then post the request to the DB
-#         form = NewDocketForm(request.POST, instance=docket)
-#         if form.is_valid(): #check for validity
-#             docket.pk = None
-#             form.save() #save form to DB\
-#             return redirect('/')
-
-#     context = {'form':form}
-#     return render(request, 'dockets/new.html', context)
+@login_required
+def cloneDocket(request, pk):
+    docket = Docket.objects.get(id=pk)
+    docket.pk = None
+    docket.save() #save form to DB\
+    return redirect('dockets-home')
 

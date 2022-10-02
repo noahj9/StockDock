@@ -11,7 +11,7 @@ class NewDocketForm(ModelForm): #model form for new docket
     class Meta:
         model = Docket #the model it follows
         fields = ('customer_name', 'date', 'date_required', 'contact',  #the fields that are part of the form
-                    'account', 'phone', 'email', 'terms', 'customer_PO',
+                    'account', 'terms', 'customer_PO',
                     'deposit', 'rep', 'csr',
                     'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1'
                 )
@@ -21,8 +21,6 @@ class NewDocketForm(ModelForm): #model form for new docket
             'date_required': DatePickerInput(attrs={'class': 'form-control'}),
             'contact': AddAnotherWidgetWrapper(forms.Select(attrs={'class':'form-control'}), reverse_lazy('contact-create')),
             'account': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Account'}),
-            'phone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'(xxx)-xxx-xxxx'}),
-            'email': forms.TextInput(attrs={'class':'form-control', 'placeholder':'user@company.com'}),
             'terms': forms.TextInput(attrs={'class':'form-control'}),
             'customer_PO': forms.TextInput(attrs={'class':'form-control'}),
             'deposit': forms.TextInput(attrs={'class':'form-control'}),
