@@ -79,3 +79,27 @@ def cloneDocket(request, pk):
     docket.save() #save form to DB\
     return redirect('dockets-home')
 
+@login_required
+def addJob(request, pk):
+    docket = Docket.objects.get(id=pk)
+    docket.pk = None
+    docket.quantity_1 = ""
+    docket.description_1 = ""
+    docket.finished_size_1 = ""
+    docket.stock_1 = ""
+    docket.machine = ""
+    docket.run_quantity_1 = ""
+    docket.sheet_size_1 = ""
+    docket.run_size_1 = ""
+    docket.proof_1 = ""
+    docket.inks_1 = ""
+    docket.instructions_1 = ""
+    docket.bindery_1 = ""
+    docket.file_1 = ""
+    docket.price_comission_1 = ""
+    docket.shipping_1 = ""
+    docket.terms = ""
+    docket.save()
+    return redirect('dockets-update', pk = docket.pk)
+
+

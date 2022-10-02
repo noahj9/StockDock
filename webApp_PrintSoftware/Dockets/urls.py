@@ -10,5 +10,6 @@ urlpatterns = [
     path('printDocket/<str:pk>/', views.printDocket, name='dockets-print'),
     re_path(r'^create-contact/$', ContactCreate.as_view(), name='contact-create'),
     path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
+    path('addJob/<str:pk>/', views.addJob, name='dockets-addJob'),
 ]
 
