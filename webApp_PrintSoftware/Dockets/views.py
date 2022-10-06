@@ -32,18 +32,6 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
-# @login_required
-# def newDocket(request): #new docket form view
-#     form = NewDocketForm()
-#     if request.method == 'POST': #if the method is post then post the request to the DB
-#         form = NewDocketForm(request.POST)
-#         if form.is_valid(): #check for validity
-#             form.save() #save form to DB\
-#             return redirect('dockets-home')
-
-#     context = {'form':form}
-#     return render(request, 'dockets/new.html', context) #render the page
-
 @login_required
 def updateDocket(request, pk):
     docket = Docket.objects.get(id=pk)
@@ -79,17 +67,27 @@ def cloneDocket(request, pk):
     docket.save() #save form to DB\
     return redirect('dockets-home')
 
-from Dockets.models import Contact
+@login_required
+def addJob(request, pk):
+    docket = Docket.objects.get(id=pk)
+    docket.pk = None
+    docket.quantity_1 = ""
+    docket.description_1 = ""
+    docket.finished_size_1 = ""
+    docket.stock_1 = None
+    docket.machine = ""
+    docket.run_quantity_1 = ""
+    docket.sheet_size_1 = ""
+    docket.run_size_1 = ""
+    docket.proof_1 = None
+    docket.inks_1 = None
+    docket.instructions_1 = ""
+    docket.bindery_1 = ""
+    docket.file_1 = ""
+    docket.price_comission_1 = ""
+    docket.shipping_1 = ""
+    docket.terms = None
+    docket.save()
+    return redirect('dockets-update', pk = docket.pk)
 
-def get_contactInfo_ajax(request):
-    if request.method == "POST":
-        contact_id = request.POST['contact_id']
-        data = request.POST['data']
-        try:
-            contact = Contact.objects.filter(name = contact_id)
-            phone = Contact.objects.filter(phone = contact.__dict__['phone'])
-            email = Contact.objects.filter(email = contact.__dict__['email'])
-        except Exception:
-            data['error_message'] = 'error'
-            return JsonResponse(data)
-        return JsonResponse([phone,email], safe = False) 
+
