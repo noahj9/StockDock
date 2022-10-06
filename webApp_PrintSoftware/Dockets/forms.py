@@ -19,7 +19,7 @@ class NewDocketForm(ModelForm): #model form for new docket
             'customer_name': forms.Select(attrs={'class':'form-control'}),
             'date': DatePickerInput(attrs={'class': 'form-control'}), #using custom datepicker widget
             'date_required': DatePickerInput(attrs={'class': 'form-control'}),
-            'contact': AddAnotherWidgetWrapper(forms.Select(attrs={'class':'form-control'}), reverse_lazy('contact-create')),
+            'contact': AddAnotherWidgetWrapper(forms.Select(attrs={'class':'form-control','id':'contact-select'}), reverse_lazy('contact-create')),
             'account': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Account'}),
             'terms': forms.TextInput(attrs={'class':'form-control'}),
             'customer_PO': forms.TextInput(attrs={'class':'form-control'}),

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact
@@ -79,3 +79,17 @@ def cloneDocket(request, pk):
     docket.save() #save form to DB\
     return redirect('dockets-home')
 
+from Dockets.models import Contact
+
+def get_contactInfo_ajax(request):
+    if request.method == "POST":
+        contact_id = request.POST['contact_id']
+        data = request.POST['data']
+        try:
+            contact = Contact.objects.filter(name = contact_id)
+            phone = Contact.objects.filter(phone = contact.__dict__['phone'])
+            email = Contact.objects.filter(email = contact.__dict__['email'])
+        except Exception:
+            data['error_message'] = 'error'
+            return JsonResponse(data)
+        return JsonResponse([phone,email], safe = False) 
