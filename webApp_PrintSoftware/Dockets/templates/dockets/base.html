@@ -29,6 +29,9 @@
               <img src="{% static 'assets/logo.png' %}" style="max-width:50px" alt="AR_Logo">
             </a>
           </div>
+          <div class="col-sm-1">
+            <a class="navbar-brand navbar-text text-white" href="{% url 'dockets-home' %}">StockDock</a>
+          </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,7 +40,7 @@
               <!-- Navbar Left Side -->
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'dockets-home' %}">Dockets</a>
+                  <a class="navbar-text text-white" href="{% url 'dockets-home' %}">Dockets</a>
                 </li>
               </ul>
             </div>
@@ -46,21 +49,21 @@
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                      <a class="navbar-text text-white" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                      <a class="navbar-text text-white" href="{% url 'logout' %}">Logout</a>
                     </li>
                   {% else %}
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'login' %}">Login</a>
+                      <a class="navbar-text text-white" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'register' %}">Register</a>
+                      <a class="navbar-text text-white" href="{% url 'register' %}">Register</a>
                     </li>
                   {% endif %}
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                    <a class="navbar-text text-white" href="{% url 'admin:index' %}">Admin</a>
                   </li>
                 </ul>
               </div>
