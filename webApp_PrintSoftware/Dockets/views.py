@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact
