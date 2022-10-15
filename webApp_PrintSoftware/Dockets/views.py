@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact
@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -29,19 +30,7 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     model = Docket
     form_class = NewDocketForm
     def get_success_url(self):
-        return reverse('dockets-home')
-
-# @login_required
-# def newDocket(request): #new docket form view
-#     form = NewDocketForm()
-#     if request.method == 'POST': #if the method is post then post the request to the DB
-#         form = NewDocketForm(request.POST)
-#         if form.is_valid(): #check for validity
-#             form.save() #save form to DB\
-#             return redirect('dockets-home')
-
-#     context = {'form':form}
-#     return render(request, 'dockets/new.html', context) #render the page
+        return reverse_lazy('dockets-home')
 
 @login_required
 def updateDocket(request, pk):
@@ -62,6 +51,7 @@ def deleteDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     if request.method =="POST":
         docket.delete()
+        return HttpResponseRedirect('/dockets')
     context = {'item':docket}
     return render(request, 'dockets/delete.html', context)
 
@@ -70,18 +60,34 @@ def printDocket(request, pk):
     docket = Docket.objects.get(id=pk)
 
 
-# @login_required
-# def cloneDocket(request,pk):
-#     docket = Docket.objects.get(id=pk)
-#     form = NewDocketForm(instance=docket)
+@login_required
+def cloneDocket(request, pk):
+    docket = Docket.objects.get(id=pk)
+    docket.pk = None
+    docket.save() #save form to DB\
+    return redirect('dockets-home')
 
-#     if request.method == "POST": #if the method is post then post the request to the DB
-#         form = NewDocketForm(request.POST, instance=docket)
-#         if form.is_valid(): #check for validity
-#             docket.pk = None
-#             form.save() #save form to DB\
-#             return redirect('/')
+@login_required
+def addJob(request, pk):
+    docket = Docket.objects.get(id=pk)
+    docket.pk = None
+    docket.quantity_1 = ""
+    docket.description_1 = ""
+    docket.finished_size_1 = ""
+    docket.stock_1 = None
+    docket.machine = ""
+    docket.run_quantity_1 = ""
+    docket.sheet_size_1 = ""
+    docket.run_size_1 = ""
+    docket.proof_1 = None
+    docket.inks_1 = None
+    docket.instructions_1 = ""
+    docket.bindery_1 = ""
+    docket.file_1 = ""
+    docket.price_comission_1 = ""
+    docket.shipping_1 = ""
+    docket.terms = None
+    docket.save()
+    return redirect('dockets-update', pk = docket.pk)
 
-#     context = {'form':form}
-#     return render(request, 'dockets/new.html', context)
 

@@ -49,31 +49,39 @@ class Stock(models.Model):
     def __str__(self):
         return self.name
 
+class Terms(models.Model):
+    term = models.CharField(max_length=200)
+    def __str__(self):
+        return self.term
+
+class Deposit(models.Model):
+    deposit = models.CharField(max_length=200)
+    def __str__(self):
+        return self.deposit
+
 class Docket(models.Model): #contains all the data for a docket to be stored in the database
     customer_name = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
     date = models.DateField(default=datetime.date.today) #custom field form widgets
     date_required = models.DateField()
     contact = models.ForeignKey(Contact, null = True, on_delete=models.SET_NULL)
     account = models.CharField(max_length = 100)
-    phone = models.CharField(max_length = 100)  
-    email = models.EmailField(max_length = 100)
-    terms = models.CharField(max_length = 100)
+    terms = models.ForeignKey(Terms, null = True, on_delete=models.SET_NULL)
     customer_PO = models.CharField(max_length = 100)
     quote = models.CharField(max_length=100, null=True)
-    deposit = models.CharField(max_length = 100)
+    deposit = models.ForeignKey(Deposit, null = True, on_delete=models.SET_NULL)
     deposit_amount = models.CharField(max_length=100, blank=True, null=True)
     rep = models.ForeignKey(Rep, null = True, on_delete=models.SET_NULL)
     csr = models.ForeignKey(Csr, null = True, on_delete=models.SET_NULL)
     quantity_1 = models.CharField(max_length = 100)
     description_1 = models.CharField(max_length = 100)
     finished_size_1 = models.CharField(max_length = 100)
-    stock_1 = models.CharField(max_length = 100)
+    stock_1 = models.ForeignKey(Stock, null = True, on_delete=models.SET_NULL)
     machine_1 = models.ManyToManyField(Machine)
     run_quantity_1 = models.CharField(max_length = 100)
     sheet_size_1 = models.CharField(max_length = 100)
     run_size_1 = models.CharField(max_length = 100)
-    proof_1 = models.CharField(max_length = 100)
-    inks_1 = models.CharField(max_length = 100)
+    proof_1 = models.ForeignKey(Proof, null = True, on_delete=models.SET_NULL)
+    inks_1 = models.ForeignKey(Ink, null = True, on_delete=models.SET_NULL)
     instructions_1 = models.TextField(blank=True)
     bindery_1 = models.CharField(max_length = 100)
     file_1 = models.CharField(max_length = 100)
