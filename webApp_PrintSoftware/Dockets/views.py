@@ -3,10 +3,11 @@ from .forms import NewDocketForm
 from django.http import HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
-from .models import Docket, Contact
+from .models import Docket, Contact, Client, Stock
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
+from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -17,6 +18,13 @@ class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     redirect_field_name = 'redirect_to'
     model = Contact
     fields = ['name', 'phone', 'email', 'client']
+
+class ClientCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    model = Client
+    fields = ['name']
+
 
 def home(request): #passes dockets to the page and creates a query set which can be searched and filtered
     docket_list = Docket.objects.all()

@@ -65,12 +65,16 @@
                 {{ form.deposit }}
             </div>
             <div class="form-group col-md-4">
-                <label>Sales Rep: </label>
-                {{ form.rep  }}
+                <label>Terms: </label>
+                {{ form.terms  }}
             </div>
         </div>
 
         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Sales Rep: </label>
+                {{ form.rep  }}
+            </div>
             <div class="form-group col-md-4">
                 <label>CSR: </label>
                 {{ form.csr }}
@@ -109,10 +113,6 @@
                 {{ form.run_quantity_1  }}
             </div>
 
-            <div class="form-group col-md-4">
-                <label>Terms: </label>
-                {{ form.terms  }}
-            </div>
         </div>
 
         <div class="form-row">
@@ -194,32 +194,7 @@
 
     </form>
     {{ form.media }}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script defer>
-        $(function(){
-            $("#contact-select").change(function () {
-                alert("change");
-                const contactId = $(this).val();  
-                $.ajax({                       
-                    type: "POST",
-                    url: '{% url "get_contactInfo_ajax"%}',
-                    data: {
-                        'contact_id': contactId,
-                        'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
-                    },
-                    success: function (data) {  
-                        let html_data = '<option value="">---------</option>';
-                        data.forEach(function (data) {
-                            alert(data)
-                            html_data += `<option value="">${data.title}</option>`
-                        });
-                        $("#phone").html(html_data); 
-                        $("#email").html(html_data);
-                    }
-                });
-            });
-        });
-    </script>
+
 
 {% endblock content %}
 
