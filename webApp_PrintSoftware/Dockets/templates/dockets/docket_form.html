@@ -22,12 +22,6 @@
                 {{ form.date_required  }}
             </div>
         </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Account: </label>
-                {{ form.account }}
-            </div>
         </div>
 
         <div class="form-row">
@@ -49,6 +43,12 @@
                   </select>
             </div>
         </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Quote #: </label>
+                {{ form.account }}
+            </div>
+        </div>
     </div>
 
 
@@ -57,6 +57,10 @@
         <p></p>
         <div class="form-row">
             <div class="form-group col-md-4">
+                <label>Terms: </label>
+                {{ form.terms  }}
+            </div>
+            <div class="form-group col-md-4">
                 <label>Customer PO: </label>
                 {{ form.customer_PO  }}
             </div>
@@ -64,13 +68,13 @@
                 <label>Deposit: </label>
                 {{ form.deposit }}
             </div>
-            <div class="form-group col-md-4">
-                <label>Terms: </label>
-                {{ form.terms  }}
-            </div>
         </div>
 
         <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Deposit Amount: </label>
+                {{ form.deposit_amount  }}
+            </div>
             <div class="form-group col-md-4">
                 <label>Sales Rep: </label>
                 {{ form.rep  }}
@@ -82,9 +86,8 @@
         </div>
     </div>
 
-
     <div class="form-group wrapper">
-        <h5>Job Details (mandatory section)</h5>
+        <h2>Job Details 1</h2>
         <p></p>
 
         <div class="form-row">
@@ -175,9 +178,110 @@
                 {{ form.shipping_1 }}
             </div>        
         </div>
+        <br>
+    </div>
+<!-- Section 2 -->
+    <div class="form-group wrapper">
+        <h5>Job Details 2</h5>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Quantity: </label>
+                {{ form.quantity_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Description: </label>
+                {{ form.description_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Finished Size: </label>
+                {{ form.finished_size_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock_2  }}
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Run Quantity: </label>
+                {{ form.run_quantity_2  }}
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Machine: </label>
+                <br>
+                {{ form.machine_2 }}
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Sheet Size: </label>
+                {{ form.sheet_size_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Run Size: </label>
+                {{ form.run_size_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Proof: </label>
+                {{ form.proof_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Inks: </label>
+                {{ form.inks_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Bindery: </label>
+                {{ form.bindery_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>File: </label>
+                {{ form.file_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Instructions: </label>
+                {{ form.instructions_2 }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group wrapper">
+        <h5>Pricing and Shipping</h5>
+        <p></p>
         <div class="form-row">
             <div class="form-group col-md-6">
-            <input type="submit" value="Save Docket" class="btn btn-success"> 
+                <label>Pricing: </label>
+                {{ form.price_comission_2  }}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Shipping: </label>
+                {{ form.shipping_2 }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Reception Notes: </label>
+                {{ form.reception_notes }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+            <input type="submit" value="Save Docket" class="btn btn-success">
         </div>
         </div>
     </div>
