@@ -22,7 +22,6 @@
                 {{ form.date_required  }}
             </div>
         </div>
-        </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
@@ -87,7 +86,7 @@
     </div>
 
     <div class="form-group wrapper">
-        <h2>Job Details 1</h2>
+        <h4>Job Details 1</h4>
         <p></p>
 
         <div class="form-row">
@@ -119,7 +118,7 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-12">
+            <div class="form-group col-md-12 inline-block">
                 <label>Machine: </label>
                 <br>
                 {{ form.machine_1 }}
@@ -182,7 +181,102 @@
     </div>
 <!-- Section 2 -->
     <div class="form-group wrapper">
-        <h5>Job Details 2</h5>
+        <h4>Job Details 2</h4>
+        <p></p>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Quantity: </label>
+                {{ form.quantity_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Description: </label>
+                {{ form.description_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Finished Size: </label>
+                {{ form.finished_size_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock_2  }}
+            </div>
+
+            <div class="form-group col-md-4">
+                <label>Run Quantity: </label>
+                {{ form.run_quantity_2  }}
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Machine: </label>
+                <br>
+                {{ form.machine_2 }}
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Sheet Size: </label>
+                {{ form.sheet_size_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Run Size: </label>
+                {{ form.run_size_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Proof: </label>
+                {{ form.proof_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Inks: </label>
+                {{ form.inks_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Bindery: </label>
+                {{ form.bindery_2 }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>File: </label>
+                {{ form.file_2  }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Instructions: </label>
+                {{ form.instructions_2 }}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group wrapper">
+        <h5>Pricing and Shipping</h5>
+        <p></p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Pricing: </label>
+                {{ form.price_comission_2  }}
+            </div>
+            <div class="form-group col-md-6">
+                <label>Shipping: </label>
+                {{ form.shipping_2 }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="form-group wrapper">
+        <h4>Job Details 3</h4>
         <p></p>
 
         <div class="form-row">
@@ -295,9 +389,9 @@
            {% endfor %}
        {% endfor %}
     {% endif %}
-
+        {{ form.media }}
     </form>
-    {{ form.media }}
+
 
 
 {% endblock content %}

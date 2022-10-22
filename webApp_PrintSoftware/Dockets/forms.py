@@ -52,7 +52,7 @@ class NewDocketForm(ModelForm): #model form for new docket
             'date': DatePickerInput(attrs={'class': 'form-control'}), #using custom datepicker widget
             'date_required': DatePickerInput(attrs={'class': 'form-control'}),
             'contact': AddAnotherWidgetWrapper(forms.Select(attrs={'class':'form-control','id':'contact-select'}), reverse_lazy('contact-create')),
-            'account': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Account'}),
+            'account': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quote Number'}),
             'terms': forms.Select(attrs={'class':'form-control'}),
             'customer_PO': forms.TextInput(attrs={'class':'form-control'}),
             'deposit': forms.Select(attrs={'class':'form-control'}),
@@ -95,3 +95,8 @@ class NewDocketForm(ModelForm): #model form for new docket
             'shipping_3': forms.TextInput(attrs={'class':'form-control'}),
             'reception_notes': forms.TextInput(attrs={'class':'form-control'}),
         }
+
+        def __init__(self, *args, **kwargs):
+            super(NewDocketForm, self).__init__(*args, **kwargs)
+            self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
+                    'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3', 'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
