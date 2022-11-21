@@ -198,23 +198,23 @@
     <script defer>
         $(function(){
             $("#contact-select").change(function () {
-                alert("change");
-                const contactId = $(this).val();  
-                $.ajax({                       
-                    type: "POST",
+                const contactId = $("#contact-select").find(":selected").text();
+                alert(contactId);
+                $.ajax({                     
                     url: '{% url "get_contactInfo_ajax"%}',
                     data: {
                         'contact_id': contactId,
                         'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
                     },
                     success: function (data) {  
-                        let html_data = '<option value="">---------</option>';
+                        alert(data)
+                        {% comment %} let html_data = '<option value="">---------</option>';
                         data.forEach(function (data) {
                             alert(data)
                             html_data += `<option value="">${data.title}</option>`
                         });
                         $("#phone").html(html_data); 
-                        $("#email").html(html_data);
+                        $("#email").html(html_data); {% endcomment %}
                     }
                 });
             });

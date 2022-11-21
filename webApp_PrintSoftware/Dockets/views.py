@@ -10,6 +10,7 @@ from django.views.generic.edit import CreateView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+import Dockets.scripts.pdf_filler as filler
 
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -31,6 +32,10 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     form_class = NewDocketForm
     def get_success_url(self):
         return reverse_lazy('dockets-home')
+
+def updateSubCats(req):
+    result = req.GET.get('client',None)
+    return result
 
 @login_required
 def updateDocket(request, pk):
@@ -56,8 +61,10 @@ def deleteDocket(request, pk):
     return render(request, 'dockets/delete.html', context)
 
 @login_required
-def printDocket(request, pk):
+def printDocket(req,pk):
     docket = Docket.objects.get(id=pk)
+    filler.execute(docket)
+    return redirect('dockets-home')
 
 
 @login_required

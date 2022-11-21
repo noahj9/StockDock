@@ -9,7 +9,9 @@ docket = {'Clear': '', 'Date In': '11/11/2011', 'Date Required': '11/12/2011', '
           'Terms': 'COD', 'Deposits': '50%', 'Deposit Amount': '212', 'Salesrep': 'Moe', 'CSR': 'Moe',
           '0': '1212', '1': '12313', '2': '123123', 'Reception Notes': '123123', 'Customer PO': '123123'}
  
-def execute():
+def execute(docket):
+    
+    
     path = Path(__file__).parent.resolve()
    
     key = keygen()
@@ -59,4 +61,4 @@ def keygen():
     key = p1+p2
     return key
  
-execute()
+
