@@ -63,6 +63,7 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     customer_name = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
     date = models.DateField(default=datetime.date.today) #custom field form widgets
     date_required = models.DateField()
+    flexibility = models.CharField(max_length = 100)
     contact = models.ForeignKey(Contact, null = True, on_delete=models.SET_NULL)
     account = models.CharField(max_length = 100)
     terms = models.ForeignKey(Terms, null = True, on_delete=models.SET_NULL)

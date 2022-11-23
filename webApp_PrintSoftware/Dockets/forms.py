@@ -23,6 +23,8 @@ class NewDocketForm(ModelForm): #model form for new docket
             (13, 'PLS'),
             (14, 'Other'),
             (15, 'N/A'))
+    flexibility = ((1, 'Flexible'),
+                    (2, 'Firm'))
 
     stock_1 = forms.ModelChoiceField(queryset=Stock.objects.all(), widget=forms.Select(attrs = {'class': 'form-control'}))
     stock_2 = forms.ModelChoiceField(queryset=Stock.objects.all(), widget=forms.Select(attrs = {'class': 'form-control'}))
@@ -36,10 +38,11 @@ class NewDocketForm(ModelForm): #model form for new docket
     machine_1 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,choices = machines)
     machine_2 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,choices = machines)
     machine_3 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(attrs = {'class': 'list-inline'}),choices = machines)
+    flexibility = forms.MultipleChoiceField(widget=forms.Select(attrs = {'class':'form-control'}), choices = flexibility)
 
     class Meta:
         model = Docket #the model it follows
-        fields = ('customer_name', 'date', 'date_required', 'contact',  #the fields that are part of the form
+        fields = ('customer_name', 'date', 'date_required', 'flexibility', 'contact',  #the fields that are part of the form
                     'account', 'terms', 'customer_PO',
                     'deposit', 'rep', 'csr', 'reception_notes',
                     'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1',
