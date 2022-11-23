@@ -11,6 +11,7 @@ from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 import Dockets.scripts.pdf_filler as filler
+import json
 
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -34,7 +35,8 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
         return reverse_lazy('dockets-home')
 
 def updateSubCats(req):
-    result = req.GET.get('client',None)
+    data = req.GET.get('name')
+    result = Contact.objects.get(name__exact = data)
     return result
 
 @login_required
