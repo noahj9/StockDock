@@ -200,28 +200,16 @@
             $("#contact-select").change(async function () {
                 const contactId = $("#contact-select").find(":selected").text();
                 alert(contactId);
-                // data = await fetch({% url "get_contactInfo_ajax"%},{
-                //     method: 'GET',
-                //     body:JSON.stringify({
-                //         name:contactId
-                //     })
-                // })
-                // res = data.json();
                 $.ajax({
                     url: '{% url "get_contactInfo_ajax"%}',
+                    dataType: "json",
                     data: {
                         'name': contactId,
                         'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
                     },
                     success: function (data) {
-                        alert(data)
-                        {% comment %} let html_data = '<option value="">---------</option>';
-                        data.forEach(function (data) {
-                            alert(data)
-                            html_data += `<option value="">${data.title}</option>`
-                        });
-                        $("#phone").html(html_data);
-                        $("#email").html(html_data); {% endcomment %}
+                        $("#phone").first().html(`<option selected disabled>${data.phone}</option>`);
+                        $("#email").first().html(`<option selected disabled>${data.email}</option>`);
                     }
                 });
             });

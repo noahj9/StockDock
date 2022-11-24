@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponseRedirect,JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact
@@ -37,7 +37,11 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
 def updateSubCats(req):
     data = req.GET.get('name')
     result = Contact.objects.get(name__exact = data)
-    return result
+    responseObj = {
+        "phone": result.phone,
+        "email": result.email,
+    }
+    return HttpResponse(json.dumps(responseObj), content_type="application/json")
 
 @login_required
 def updateDocket(request, pk):
