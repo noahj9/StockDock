@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponseRedirect,JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact, Client, Stock
@@ -11,6 +11,8 @@ from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+import Dockets.scripts.pdf_filler as filler
+import json
 
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -40,6 +42,15 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
+def updateSubCats(req):
+    data = req.GET.get('name')
+    result = Contact.objects.get(name__exact = data)
+    responseObj = {
+        "phone": result.phone,
+        "email": result.email,
+    }
+    return HttpResponse(json.dumps(responseObj), content_type="application/json")
+
 @login_required
 def updateDocket(request, pk):
     docket = Docket.objects.get(id=pk)
@@ -64,8 +75,10 @@ def deleteDocket(request, pk):
     return render(request, 'dockets/delete.html', context)
 
 @login_required
-def printDocket(request, pk):
+def printDocket(req,pk):
     docket = Docket.objects.get(id=pk)
+    filler.execute(docket)
+    return redirect('dockets-home')
 
 
 @login_required

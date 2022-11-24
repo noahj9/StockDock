@@ -12,5 +12,6 @@ urlpatterns = [
     re_path(r'^create-client/$', ClientCreate.as_view(), name='client-create'),
     path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
     path('addJob/<str:pk>/', views.addJob, name='dockets-addJob'),
+    path('ajax/update_subCat/', views.updateSubCats, name='get_contactInfo_ajax'),
 ]
 

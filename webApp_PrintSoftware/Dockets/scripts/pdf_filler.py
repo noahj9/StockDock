@@ -1,7 +1,7 @@
 import random
 from fillpdf import fillpdfs
 from pathlib import Path
-import shutil
+import shutil 
 import PyPDF2
 
 docket = {'Clear': '1', 'Date In': '1', 'Date Required': '1', 'Customer Name': '1', 'Contact Name': '1', 'Phone': '1', 'Email': '1', 'quote number': '1',
@@ -14,16 +14,16 @@ docket = {'Clear': '1', 'Date In': '1', 'Date Required': '1', 'Customer Name': '
 
 def execute():
     path = Path(__file__).parent.resolve()
-
+    
     key = keygen()
-
+    
     copy(path,key)
-
+    
     data_dict = generateDataDict(path)
-
+    
     fill(data_dict,path,key)
     return str(path)+"\\docket_filled"+key+".pdf"
-
+    
 
 def copy(path,key):
     fileRead = open(str(path)+"\\docket_template.pdf",'rb')
@@ -32,7 +32,7 @@ def copy(path,key):
     fileReader = PyPDF2.PdfFileReader(fileRead)
     fileReader.numPages
     fileWriter=PyPDF2.PdfWriter()
-
+    
     for pageNum in range(fileReader.numPages):
         fileReader.getPage(pageNum)
     with open(str(path)+"\\docket_filled"+key+".pdf",'wb') as f:
@@ -47,7 +47,7 @@ def generateDataDict(path):
         data_dict[i] = docket[i]
     fileRead.close()
     return data_dict
-
+    
 
 def fill(data_dict,path,key):
     fileRead = open(str(path)+"\\docket_template.pdf",'rb')
@@ -55,7 +55,7 @@ def fill(data_dict,path,key):
     fillpdfs.write_fillable_pdf(fileRead,fileWrite,data_dict,flatten=False)
     fileWrite.close()
     fileRead.close()
-
+    
 def keygen():
     p1 = str(random.randint(1,1000))
     p2 = str(random.randint(1,1000))
