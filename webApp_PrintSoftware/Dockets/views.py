@@ -3,10 +3,11 @@ from .forms import NewDocketForm
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
-from .models import Docket, Contact
+from .models import Docket, Contact, Client, Stock
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
+from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -19,6 +20,13 @@ class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     redirect_field_name = 'redirect_to'
     model = Contact
     fields = ['name', 'phone', 'email', 'client']
+
+class ClientCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    model = Client
+    fields = ['name']
+
 
 def home(request): #passes dockets to the page and creates a query set which can be searched and filtered
     docket_list = Docket.objects.all()
@@ -87,19 +95,50 @@ def addJob(request, pk):
     docket.quantity_1 = ""
     docket.description_1 = ""
     docket.finished_size_1 = ""
-    docket.stock_1 = None
+    docket.stock_1 = ""
     docket.machine = ""
     docket.run_quantity_1 = ""
     docket.sheet_size_1 = ""
     docket.run_size_1 = ""
-    docket.proof_1 = None
-    docket.inks_1 = None
+    docket.proof_1 = ""
+    docket.inks_1 = ""
     docket.instructions_1 = ""
     docket.bindery_1 = ""
     docket.file_1 = ""
     docket.price_comission_1 = ""
     docket.shipping_1 = ""
-    docket.terms = None
+    docket.quantity_2 = ""
+    docket.description_2 = ""
+    docket.finished_size_2 = ""
+    docket.stock_2 = ""
+    docket.machine_2 = ""
+    docket.run_quantity_2 = ""
+    docket.sheet_size_2 = ""
+    docket.run_size_2 = ""
+    docket.proof_2 = ""
+    docket.inks_2 = ""
+    docket.instructions_2 = ""
+    docket.bindery_2 = ""
+    docket.file_2 = ""
+    docket.price_comission_2 = ""
+    docket.shipping_2 = ""
+    docket.quantity_3 = ""
+    docket.description_3 = ""
+    docket.finished_size_3 = ""
+    docket.stock_3 = ""
+    docket.machine_3 = ""
+    docket.run_quantity_3 = ""
+    docket.sheet_size_3 = ""
+    docket.run_size_3 = ""
+    docket.proof_3 = ""
+    docket.inks_3 = ""
+    docket.instructions_3 = ""
+    docket.bindery_3 = ""
+    docket.file_3 = ""
+    docket.price_comission_3 = ""
+    docket.shipping_3 = ""
+    docket.terms = ""
+    dockets.reception_notes = ""
     docket.save()
     return redirect('dockets-update', pk = docket.pk)
 
