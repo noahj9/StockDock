@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from . import views
-from .views import ContactCreate, CreateDocket
+from .views import ContactCreate, CreateDocket, ClientCreate
 
 urlpatterns = [
     path('', views.home, name='dockets-home'),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('deleteDocket/<str:pk>/', views.deleteDocket, name='dockets-delete'),
     path('printDocket/<str:pk>/', views.printDocket, name='dockets-print'),
     re_path(r'^create-contact/$', ContactCreate.as_view(), name='contact-create'),
+    re_path(r'^create-client/$', ClientCreate.as_view(), name='client-create'),
     path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
     path('addJob/<str:pk>/', views.addJob, name='dockets-addJob'),
 ]
