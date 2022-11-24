@@ -61,5 +61,3 @@ def keygen():
     p2 = str(random.randint(1,1000))
     key = p1+p2
     return key
-
-execute()

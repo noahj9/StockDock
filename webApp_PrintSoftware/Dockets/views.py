@@ -75,7 +75,7 @@ def deleteDocket(request, pk):
     return render(request, 'dockets/delete.html', context)
 
 @login_required
-def printDocket(req,pk):
+def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
     filler.execute(docket)
     return redirect('dockets-home')
