@@ -396,16 +396,16 @@
            {% endfor %}
        {% endfor %}
     {% endif %}
-        {{ form.media }}
-    </form>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     {{ form.media }}
+
+    </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script defer>
         $(function(){
             $("#contact-select").change(async function () {
                 const contactId = $("#contact-select").find(":selected").text();
-                alert(contactId);
                 $.ajax({
                     url: '{% url "get_contactInfo_ajax"%}',
                     dataType: "json",
