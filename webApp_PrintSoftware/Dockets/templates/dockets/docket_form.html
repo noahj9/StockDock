@@ -10,10 +10,6 @@
         <p></p>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label>Customer Name: </label>
-                {{ form.customer_name  }}
-            </div>
-            <div class="form-group col-md-4">
                 <label>Date: </label>
                 {{ form.date }}
             </div>
@@ -21,12 +17,16 @@
                 <label>Date Req: </label>
                 {{ form.date_required  }}
             </div>
+            <div class="form-group col-md-4">
+                <label>Flexibility: </label>
+                {{ form.flexibility }}
+            </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label>Flexibility: </label>
-                {{ form.flexibility }}
+                <label>Customer Name: </label>
+                {{ form.customer_name  }}
             </div>
         </div>
 
@@ -67,19 +67,19 @@
                 {{ form.terms  }}
             </div>
             <div class="form-group col-md-4">
-                <label>Customer PO: </label>
-                {{ form.customer_PO  }}
-            </div>
-            <div class="form-group col-md-4">
                 <label>Deposit: </label>
                 {{ form.deposit }}
+            </div>
+            <div id='deposit' class="form-group col-md-4">
+                <label>Deposit Amount: </label>
+                {{ form.deposit_amount  }}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label>Deposit Amount: </label>
-                {{ form.deposit_amount  }}
+                <label>Customer PO: </label>
+                {{ form.customer_PO  }}
             </div>
             <div class="form-group col-md-4">
                 <label>Sales Rep: </label>
@@ -391,7 +391,7 @@
        {% for field in form %}
            {% for error in field.errors %} 
               <div class="alert alert-danger">
-                   <strong>{{ error|escape }}</strong>
+                   <strong>{{field.label}}:{{ error|escape }}</strong>
               </div>
            {% endfor %}
        {% endfor %}
@@ -403,6 +403,8 @@
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
+        $('#id_inks_1_0').addClass("form-control")
+        $('#id_inks_1_1').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
         $('#id_inks_1_0').click( function(){
           if ($(this).find('option:selected').val() === "Other") {
@@ -410,7 +412,8 @@
           else {
              $('#id_inks_1_1').hide(); $('#id_inks_1_1').val(""); }
         });
-        $('#id_inks_1_0').trigger("click"); /* sets initial state right */
+        /* sets initial state right */
+        $('#id_inks_1_0').trigger("click");
     </script>
     <script defer>
         $(function(){

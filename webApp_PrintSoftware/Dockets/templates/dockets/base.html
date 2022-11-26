@@ -29,22 +29,15 @@
               <img src="{% static 'assets/logo.png' %}" style="max-width:50px" alt="AR_Logo">
             </a>
           </div>
-          <div class="col-sm-1">
+          <div class="col-sm-2">
             <a class="navbar-brand navbar-text text-white" href="{% url 'dockets-home' %}">StockDock</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="col-sm-9">
-              <!-- Navbar Left Side -->
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="navbar-text text-white" href="{% url 'dockets-home' %}">Dockets</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-3 text-end">
+            <div class='col-sm-6'></div>
+            <div class="col-sm-6 text-end text-right">
                 <!-- Navbar Right Side -->
                 <ul class="navbar-nav">
                   {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
@@ -92,8 +85,8 @@
                 <center><h3>Menu</h3></center>
                 <p class='text-muted'>
                 <div class="list-group" id="menu">
-                    <a href="{% url 'dockets-new' %}" class="list-group-item menu-link list-group-item-success">New Docket</a>
-                    <a href="{% url 'dockets-home' %}" class="list-group-item menu-link list-group-item-info">Manage Dockets</a>
+                    <a href="{% url 'dockets-new' %}" class="list-group-item menu-link list-group-item-success text-center">New Docket</a>
+                    <a href="{% url 'dockets-home' %}" class="list-group-item menu-link list-group-item-info text-center">Manage Dockets</a>
                 </div>
                 </p>
             </div>
@@ -105,7 +98,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: black;">
     © 2022 Copyright:
-    <a class="text-white" href="https://github.com/noahj9">Noah Jina & Felix Zheng</a>
+    <a class="text-white" href="https://github.com/noahj9/PrintSoftware">Noah Jina & Felix Zheng</a>
   </div>
   <!-- Copyright -->
 </footer>
