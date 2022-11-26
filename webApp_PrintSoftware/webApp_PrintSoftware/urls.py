@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from users import views as user_views
 from django.contrib.auth import views as auth_views
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'), #admin page
@@ -29,4 +30,5 @@ urlpatterns = [
     path('resetpassword_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'), #password reset
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'), #password reset
     path('resetpassword_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'), #password reset
+    path('', RedirectView.as_view(pattern_name = 'login')),
 ]

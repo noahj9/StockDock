@@ -42,13 +42,14 @@ class NewDocketForm(ModelForm): #model form for new docket
 
     class Meta:
         model = Docket #the model it follows
-        fields = ('customer_name', 'date', 'date_required', 'flexibility', 'contact',  #the fields that are part of the form
-                    'account', 'terms', 'customer_PO',
-                    'deposit', 'deposit_amount', 'rep', 'csr', 'reception_notes',
-                    'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1',
-                    'quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
-                    'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3', 'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3', 'reception_notes'
-                )
+        # fields = ('customer_name', 'date', 'date_required', 'flexibility', 'contact',  #the fields that are part of the form
+        #             'account', 'terms', 'customer_PO',
+        #             'deposit', 'deposit_amount', 'rep', 'csr', 'reception_notes',
+        #             'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1',
+        #             'quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
+        #             'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3', 'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3', 'reception_notes'
+        #         )
+        fields = "__all__"
 
         widgets = { #allows utilization of bootstrap form controls and styling
             'customer_name': AddAnotherWidgetWrapper(forms.Select(attrs={'class':'form-control'}), reverse_lazy('client-create')),
@@ -103,3 +104,4 @@ class NewDocketForm(ModelForm): #model form for new docket
             self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
                     'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3',
                     'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
+            self.fields['inks_1'].empty_label = "-----"

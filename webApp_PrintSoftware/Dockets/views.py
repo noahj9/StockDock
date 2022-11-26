@@ -137,8 +137,7 @@ def addJob(request, pk):
     docket.file_3 = ""
     docket.price_comission_3 = ""
     docket.shipping_3 = ""
-    docket.terms = ""
-    dockets.reception_notes = ""
+    docket.reception_notes = ""
     docket.save()
     return redirect('dockets-update', pk = docket.pk)
 
