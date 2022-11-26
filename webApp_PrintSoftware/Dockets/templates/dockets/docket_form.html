@@ -402,6 +402,16 @@
 
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks_1_0').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks_1_1').show(); }
+          else {
+             $('#id_inks_1_1').hide(); $('#id_inks_1_1').val(""); }
+        });
+        $('#id_inks_1_0').trigger("click"); /* sets initial state right */
+    </script>
     <script defer>
         $(function(){
             $("#contact-select").change(async function () {

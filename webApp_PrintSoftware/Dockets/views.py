@@ -3,7 +3,7 @@ from .forms import NewDocketForm
 from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
-from .models import Docket, Contact, Client, Stock
+from .models import Docket, Contact, Client, Stock, Ink
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
