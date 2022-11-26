@@ -289,27 +289,27 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Quantity: </label>
-                {{ form.quantity_2  }}
+                {{ form.quantity_3  }}
             </div>
             <div class="form-group col-md-4">
                 <label>Description: </label>
-                {{ form.description_2 }}
+                {{ form.description_3 }}
             </div>
             <div class="form-group col-md-4">
                 <label>Finished Size: </label>
-                {{ form.finished_size_2  }}
+                {{ form.finished_size_3  }}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Stock: </label>
-                {{ form.stock_2  }}
+                {{ form.stock_3  }}
             </div>
 
             <div class="form-group col-md-4">
                 <label>Run Quantity: </label>
-                {{ form.run_quantity_2  }}
+                {{ form.run_quantity_3  }}
             </div>
 
         </div>
@@ -318,7 +318,7 @@
             <div class="form-group col-md-12">
                 <label>Machine: </label>
                 <br>
-                {{ form.machine_2 }}
+                {{ form.machine_3 }}
             </div>
         </div>
 
@@ -326,37 +326,37 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Sheet Size: </label>
-                {{ form.sheet_size_2  }}
+                {{ form.sheet_size_3  }}
             </div>
             <div class="form-group col-md-4">
                 <label>Run Size: </label>
-                {{ form.run_size_2 }}
+                {{ form.run_size_3 }}
             </div>
             <div class="form-group col-md-4">
                 <label>Proof: </label>
-                {{ form.proof_2  }}
+                {{ form.proof_3  }}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Inks: </label>
-                {{ form.inks_2  }}
+                {{ form.inks_3  }}
             </div>
             <div class="form-group col-md-4">
                 <label>Bindery: </label>
-                {{ form.bindery_2 }}
+                {{ form.bindery_3 }}
             </div>
             <div class="form-group col-md-4">
                 <label>File: </label>
-                {{ form.file_2  }}
+                {{ form.file_3  }}
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label>Special Instructions: </label>
-                {{ form.instructions_2 }}
+                {{ form.instructions_3 }}
             </div>
         </div>
     </div>
@@ -414,6 +414,32 @@
         });
         /* sets initial state right */
         $('#id_inks_1_0').trigger("click");
+    </script>
+    <script>
+        $('#id_inks_2_0').addClass("form-control")
+        $('#id_inks_2_1').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks_2_0').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks_2_1').show(); }
+          else {
+             $('#id_inks_2_1').hide(); $('#id_inks_1_1').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks_2_0').trigger("click");
+    </script>
+    <script>
+        $('#id_inks_3_0').addClass("form-control")
+        $('#id_inks_3_1').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks_3_0').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks_3_1').show(); }
+          else {
+             $('#id_inks_3_1').hide(); $('#id_inks_3_1').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks_3_0').trigger("click");
     </script>
     <script defer>
         $(function(){
