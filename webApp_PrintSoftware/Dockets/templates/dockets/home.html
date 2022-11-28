@@ -35,7 +35,7 @@
               <a class="btn btn-sm btn-success mr-2" href="{% url 'dockets-addJob' docket.id %}">Add Job</a>
               <a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a>
             </td>
-            <td><a class="btn btn-sm btn-info" href="{% url 'dockets-print' docket.id %}">Print</a></td>
+            <td><a class="btn btn-sm btn-info" href="{% url 'dockets-print' docket.id %}" target="_blank">Print</a></td>
           </tr>
         {% endfor %}
         </tbody>

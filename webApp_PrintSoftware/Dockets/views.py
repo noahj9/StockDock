@@ -1,6 +1,7 @@
+import os
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
-from django.http import HttpResponse, HttpResponseRedirect,JsonResponse
+from django.http import FileResponse, HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
 from .models import Docket, Contact, Client, Stock, Ink
@@ -11,9 +12,10 @@ from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.forms.models import model_to_dict
 import Dockets.scripts.pdf_filler as filler
 import json
-
+import time
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
@@ -32,6 +34,10 @@ def home(request): #passes dockets to the page and creates a query set which can
     docket_list = Docket.objects.all()
     myFilter = DocketFilter(request.GET, queryset=docket_list)
     docket_list = myFilter.qs
+    for filename in os.listdir('./Dockets/scripts'):
+        if "filled" in filename: 
+            print ("removed " + filename)
+            os.remove('./Dockets/scripts/'+filename)
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
 
 class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -77,15 +83,17 @@ def deleteDocket(request, pk):
 @login_required
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
-    filler.execute(docket)
-    return redirect('dockets-home')
+    contact = Contact.objects.get(name = docket.contact)
+    path = filler.execute(model_to_dict(docket),model_to_dict(contact))
+    reverse_lazy('dockets-home')
+    return FileResponse(open(path, 'rb'),content_type='application/pdf')
 
 
 @login_required
 def cloneDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     docket.pk = None
-    docket.save() #save form to DB\
+    docket.save() #save form to DB
     return redirect('dockets-home')
 
 @login_required
