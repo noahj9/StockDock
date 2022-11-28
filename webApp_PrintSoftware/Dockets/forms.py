@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Docket, Stock, Proof, Ink, Machine
+from .models import Docket, Stock, Proof, Ink, Machine, Contact
 from .widgets import DatePickerInput
 from django.urls import reverse_lazy
 from django_addanother.widgets import AddAnotherWidgetWrapper
@@ -99,9 +99,9 @@ class NewDocketForm(ModelForm): #model form for new docket
             'reception_notes': forms.TextInput(attrs={'class':'form-control'}),
         }
 
-        def __init__(self, *args, **kwargs):
-            super(NewDocketForm, self).__init__(*args, **kwargs)
-            self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
-                    'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3',
-                    'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
-            self.fields['inks_1'].empty_label = "-----"
+    def __init__(self, *args, **kwargs):
+        super(NewDocketForm, self).__init__(*args, **kwargs)
+        # self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
+        #         'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3',
+        #         'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
+        self.fields['contact'].queryset = Contact.objects.none()

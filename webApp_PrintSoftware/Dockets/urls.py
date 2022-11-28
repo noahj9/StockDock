@@ -13,5 +13,6 @@ urlpatterns = [
     path('cloneDocket/<str:pk>/', views.cloneDocket, name='dockets-clone'),
     path('addJob/<str:pk>/', views.addJob, name='dockets-addJob'),
     path('ajax/update_subCat/', views.updateSubCats, name='get_contactInfo_ajax'),
+    path('ajax/updateContacts', views.getContacts, name = 'get-contacts'),
 ]
 

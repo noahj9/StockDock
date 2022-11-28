@@ -51,6 +51,18 @@ def updateSubCats(req):
     }
     return HttpResponse(json.dumps(responseObj), content_type="application/json")
 
+# def updateContacts(request):
+#     data = json.loads(request.body)
+#     contacts = Contact.objects.filter(client__id= data['user_id'])
+#     print(contacts)
+#     return JsonResponse(list(contacts.values("id", "name")), safe = False)
+
+def getContacts(request):
+    data = json.loads(request.body)
+    client_Id = data["id"]
+    contacts = Contact.objects.filter(client__id = client_Id)
+    return JsonResponse(list(contacts.values("id", "name")), safe = False)
+
 @login_required
 def updateDocket(request, pk):
     docket = Docket.objects.get(id=pk)
