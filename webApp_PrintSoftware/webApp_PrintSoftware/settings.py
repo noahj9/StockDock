@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_addanother',
     'multiselectfield',
+    "django.contrib.sites",
+    "invitations",
 ]
 
 MIDDLEWARE = [
@@ -118,6 +120,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+SITE_ID = 1
 
 
 # Static files (CSS, JavaScript, Images)

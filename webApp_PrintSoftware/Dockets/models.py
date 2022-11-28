@@ -2,6 +2,10 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
+from invitations.utils import get_invitation_model
+
+# for sending invitation to new users
+# Invitation = get_invitation_model()
 
 class Client(models.Model): #database table to hold all client names
     name = models.CharField(max_length = 100)
