@@ -31,8 +31,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-# DEVELOPMENT_MODE = True
+# DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
+DEVELOPMENT_MODE = True
 
 # Application definition
 
@@ -98,8 +98,12 @@ WSGI_APPLICATION = 'webApp_PrintSoftware.wsgi.application'
 if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            "NAME":  "test",
+            'USER': 'postgres',
+            'PASSWORD': 'coding22',
+            'HOST': 'localhost',
+            'PORT': '5432',
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':

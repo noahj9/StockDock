@@ -32,9 +32,9 @@ class NewDocketForm(ModelForm): #model form for new docket
     proof_1 = forms.ModelChoiceField(queryset=Proof.objects.all(), widget=forms.Select(attrs = {'class': 'form-control'}))
     proof_2 = forms.ModelChoiceField(queryset=Proof.objects.all(), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
     proof_3 = forms.ModelChoiceField(queryset=Proof.objects.all(), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
-    inks_1 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
-    inks_2 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
-    inks_3 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
+    Inks_1 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
+    Inks_2 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
+    Inks_3 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
     machine_1 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
     machine_2 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
     machine_3 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
@@ -45,9 +45,9 @@ class NewDocketForm(ModelForm): #model form for new docket
         # fields = ('customer_name', 'date', 'date_required', 'flexibility', 'contact',  #the fields that are part of the form
         #             'account', 'terms', 'customer_PO',
         #             'deposit', 'deposit_amount', 'rep', 'csr', 'reception_notes',
-        #             'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1',
-        #             'quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
-        #             'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3', 'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3', 'reception_notes'
+        #             'quantity_1', 'description_1', 'finished_size_1', 'stock_1', 'machine_1', 'run_quantity_1', 'sheet_size_1', 'run_size_1', 'proof_1', 'Inks_1', 'instructions_1', 'bindery_1', 'file_1', 'price_comission_1', 'shipping_1',
+        #             'quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'Inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
+        #             'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'Inks_3', 'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3', 'reception_notes'
         #         )
         fields = "__all__"
 
@@ -101,7 +101,7 @@ class NewDocketForm(ModelForm): #model form for new docket
 
     def __init__(self, *args, **kwargs):
         super(NewDocketForm, self).__init__(*args, **kwargs)
-        # self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
-        #         'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'inks_3',
+        # self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'Inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
+        #         'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'Inks_3',
         #         'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
         self.fields['contact'].queryset = Contact.objects.all()
