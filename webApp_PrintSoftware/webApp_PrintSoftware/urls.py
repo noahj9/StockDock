@@ -20,16 +20,16 @@ from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name='admin'), #admin page
-    path('dockets/', include('Dockets.urls')), #dockets application
-    path("invitations/", include('invitations.urls', namespace='invitations')), #invitations to the app
-    path('register/', user_views.register, name='account_signup'), #register path
-    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'), #login path
-    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'), #logout path
-    path('profile/', user_views.profile, name='profile'), #profile path
-    path('resetpassword/', auth_views.PasswordResetView.as_view(), name='reset_password'), #password reset
-    path('resetpassword_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'), #password reset
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'), #password reset
-    path('resetpassword_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'), #password reset
-    path('', RedirectView.as_view(pattern_name = 'login')),
+#     path('admin/', admin.site.urls, name='admin'), #admin page
+#     path('dockets/', include('Dockets.urls')), #dockets application
+#     path("invitations/", include('invitations.urls', namespace='invitations')), #invitations to the app
+#     path('register/', user_views.register, name='account_signup'), #register path
+#     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'), #login path
+#     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'), #logout path
+#     path('profile/', user_views.profile, name='profile'), #profile path
+#     path('resetpassword/', auth_views.PasswordResetView.as_view(), name='reset_password'), #password reset
+#     path('resetpassword_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'), #password reset
+#     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'), #password reset
+#     path('resetpassword_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'), #password reset
+#     path('', RedirectView.as_view(pattern_name = 'login')),
 ]
