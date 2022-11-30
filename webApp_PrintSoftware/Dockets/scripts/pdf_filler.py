@@ -30,7 +30,7 @@ def execute(docket,contact):
     return str(path)+"\\filled"+key+".pdf"
 
 def copy(path,key):
-    fileRead = open(str(path)+"\\docket_template.pdf",'rb')
+    fileRead = open(str(path)+"docket_template.pdf",'rb')
 
     fileReader = PyPDF2.PdfFileReader(fileRead)
     fileReader.numPages
