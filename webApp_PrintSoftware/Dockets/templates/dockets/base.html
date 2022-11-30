@@ -36,26 +36,22 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class='col-sm-6'></div>
-            <div class="col-sm-6 text-end text-right">
+            <div class="col-sm-12">
                 <!-- Navbar Right Side -->
-                <ul class="navbar-nav">
+                <ul class="navbar-nav justify-content-end">
                   {% if user.is_authenticated %} <!-- if user is authenticated show them logout instead of login, also show username -->
-                    <li class="nav-item">
-                      <a class="navbar-text text-white" href="{% url 'profile' %}">{{ user.username }}'s Profile</a>
+                    <li class="nav-item px-2">
+                      <a class="navbar-text text-white" href="{% url 'profile' %}">{{ user.username }}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-2">
                       <a class="navbar-text text-white" href="{% url 'logout' %}">Logout</a>
                     </li>
                   {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item px-2">
                       <a class="navbar-text text-white" href="{% url 'login' %}">Login</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="navbar-text text-white" href="{% url 'account_signup' %}">Register</a>
-                    </li>
                   {% endif %}
-                  <li class="nav-item">
+                  <li class="nav-item px-2">
                     <a class="navbar-text text-white" href="{% url 'admin:index' %}">Admin</a>
                   </li>
                 </ul>

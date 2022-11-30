@@ -57,11 +57,6 @@ def updateSubCats(req):
     }
     return HttpResponse(json.dumps(responseObj), content_type="application/json")
 
-# def updateContacts(request):
-#     data = json.loads(request.body)
-#     contacts = Contact.objects.filter(client__id= data['user_id'])
-#     print(contacts)
-#     return JsonResponse(list(contacts.values("id", "name")), safe = False)
 
 def getContacts(request):
     data = json.loads(request.body)

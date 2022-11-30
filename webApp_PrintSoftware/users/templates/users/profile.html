@@ -1,5 +1,6 @@
 {% extends "dockets/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
+    <h1>You are logged in as: {{ user.username }}</h1>
+    <h2>Please logout to change users or contact administrators for any issues.</h2>
 {% endblock content %}

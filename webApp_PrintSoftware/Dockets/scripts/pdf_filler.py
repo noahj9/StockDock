@@ -7,7 +7,7 @@ from datetime import datetime
 
 def execute(docket,contact):
     res =['',docket.get("date").strftime("%Y-%m-%d"),docket.get("date_required").strftime("%Y-%m-%d"),docket.get("customer_name"),contact.get("name"),contact.get("phone"),contact.get("email"),
-          docket.get("account"),docket.get("deposit_amount"),docket.get("quantity_1"),docket.get("description_1"),docket.get("finished_size_1"),docket.get("stock_1"),
+          docket.get("quote"),docket.get("deposit_amount"),docket.get("quantity_1"),docket.get("description_1"),docket.get("finished_size_1"),docket.get("stock_1"),
           docket.get("run_quantity_1"),docket.get("sheet_size_1"),docket.get("run_size_1"),docket.get("inks_1"),docket.get("instructions_1"),docket.get("bindery_1"),
           docket.get("price_comission_1"),docket.get("file_1"),docket.get("shipping_1"),docket.get("quantity_2"),docket.get("description_2"),docket.get("finished_size_2"),
           docket.get("stock_2"),docket.get("run_quantity_2"),docket.get("sheet_size_2"),docket.get("run_size_2"),docket.get("inks_2"),docket.get("instructions_2"),
