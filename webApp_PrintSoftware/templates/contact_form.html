@@ -1,0 +1,22 @@
+{% extends "dockets/base.html" %}
+{% block content %}
+
+<form action="" id="contact-form" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+	{{ form.as_p }}
+	</div>
+	{{ form.media }}
+
+	<input type="submit" value="Save Contact" class="btn btn-success" id="savebtn">
+
+</form>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+		$( "#contact-form" ).submit(function() {
+  			window.close();
+  			window.opener.location.reload();
+		});
+	</script>
+
+{% endblock content %}
