@@ -1,0 +1,48 @@
+{% extends "dockets/base.html" %}
+{% block content %}
+<br></br>
+    <form method="get">
+    {{myFilter.form}}
+    <button class="btn btn-primary float-right m-2" type="submit">Search</button>
+    <br></br>
+  </form>
+  <!-- Docket display table -->
+    <div class="table-wrapper-scroll-y my-customer-scrollbar">
+    <table class="table table-striped table-bordered table-hover">
+      <caption>List of Dockets</caption>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client</th>
+            <th scope="col">Rep</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+            <th scope="col">Print</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for docket in docket_list %}
+          <tr>
+            <th scope="row">{{ docket.id }}</th>
+            <td>{{ docket.customer_name }}</td>
+            <td>{{ docket.rep }}</td>
+            <td>{{ docket.date }}</td>
+            <td>{{ docket.description_1 }}</td>
+            <td>
+              <a class="btn btn-sm btn-info mr-2" href="{% url 'dockets-update' docket.id %}">Edit</a>
+              <a class="btn btn-sm btn-dark mr-2" href="{% url 'dockets-clone' docket.id %}">Duplicate</a>
+              <a class="btn btn-sm btn-success mr-2" href="{% url 'dockets-addJob' docket.id %}">Add Job</a>
+              <a class="btn btn-sm btn-danger" href="{% url 'dockets-delete' docket.id %}">Delete</a>
+            </td>
+            <td><a class="btn btn-sm btn-info" href="{% url 'dockets-print' docket.id %}" target="_blank">Print</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+
+{% endblock content %}
+
