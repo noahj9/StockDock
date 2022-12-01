@@ -38,12 +38,12 @@ def copy(path,key):
     
     for pageNum in range(fileReader.numPages):
         fileReader.getPage(pageNum)
-    with open(str(path)+"\\filled"+key+".pdf",'wb') as f:
+    with open(str(path)+"/filled"+key+".pdf",'wb') as f:
         fileWriter.write(f)
     fileRead.close()
 
 def generateDataDict(path,res):
-    fileRead = open(str(path)+"\\docket_template.pdf",'rb')
+    fileRead = open(str(path)+"/docket_template.pdf",'rb')
     data_dict = fillpdfs.get_form_fields(fileRead)
     c = 0
     for i in data_dict:
@@ -54,8 +54,8 @@ def generateDataDict(path,res):
     
 
 def fill(data_dict,path,key):
-    fileRead = open(str(path)+"\\docket_template.pdf",'rb')
-    fileWrite = open(str(path)+"\\filled"+key+".pdf",'wb')
+    fileRead = open(str(path)+"/docket_template.pdf",'rb')
+    fileWrite = open(str(path)+"/filled"+key+".pdf",'wb')
     fillpdfs.write_fillable_pdf(fileRead,fileWrite,data_dict,flatten=False)
     fileWrite.close()
     fileRead.close()
