@@ -9,13 +9,13 @@
 	{{ form.media }}
 
 	<input type="submit" value="Save Contact" class="btn btn-success" id="savebtn">
-
 </form>
+<button type="button" class="btn btn-success" onclick="window.close()">Close Pop-Up</button>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script>
+	{% comment %} <script>
 		$( "#contact-form" ).submit(function() {
   			window.close();
 		});
-	</script>
+	</script> {% endcomment %}
 
 {% endblock content %}
