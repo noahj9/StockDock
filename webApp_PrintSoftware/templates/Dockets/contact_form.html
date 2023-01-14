@@ -12,11 +12,11 @@
 
 </form>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script>
+	{% comment %} <script>
 		$( "#contact-form" ).submit(function() {
   			window.close();
   			window.opener.location.reload();
 		});
-	</script>
+	</script> {% endcomment %}
 
 {% endblock content %}
