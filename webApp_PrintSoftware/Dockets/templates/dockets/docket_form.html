@@ -452,7 +452,7 @@
         }
     </script>
 
-    <script>
+    {% comment %} <script>
         $('#id_inks_1_0').addClass("form-control")
         $('#id_inks_1_1').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
@@ -490,7 +490,7 @@
         });
         /* sets initial state right */
         $('#id_inks_3_0').trigger("click");
-    </script>
+    </script> {% endcomment %}
     <script defer>
         $(function(){
             $("#contact-select").change(async function () {

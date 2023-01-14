@@ -48,7 +48,7 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
-def updateSubCats(req):
+def updateSubCats(req): #update contact lists
     data = req.GET.get('name')
     result = Contact.objects.get(name__exact = data)
     responseObj = {
