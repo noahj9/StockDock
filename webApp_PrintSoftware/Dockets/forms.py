@@ -25,7 +25,7 @@ class NewDocketForm(ModelForm): #model form for new docket
     #         (14, 'Other'),
     #         (15, 'N/A'))
     flexibility = (('Flexible', 'Flexible'),('Firm','Firm'),('N/A','N/A'))
-
+    #make all choice fields instead of modelchoicefields
     stock_1 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
     stock_2 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
     stock_3 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
