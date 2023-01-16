@@ -1,11 +1,11 @@
 from django.urls import path, re_path
 from . import views
-from .views import ContactCreate, CreateDocket, ClientCreate
+from .views import ContactCreate, CreateDocket, ClientCreate, UpdateDocket
 
 urlpatterns = [
     path('', views.home, name='dockets-home'),
     path('newDocket/', CreateDocket.as_view(), name='dockets-new'),
-    path('updateDocket/<str:pk>/', views.updateDocket, name='dockets-update'),
+    path('updateDocket/<str:pk>/', UpdateDocket.as_view(), name='dockets-update'),
     path('deleteDocket/<str:pk>/', views.deleteDocket, name='dockets-delete'),
     path('printDocket/<str:pk>/', views.printDocket, name='dockets-print'),
     re_path(r'^create-contact/$', ContactCreate.as_view(), name='contact-create'),

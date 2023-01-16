@@ -7,7 +7,7 @@ from calendar import HTMLCalendar
 from .models import Docket, Contact, Client, Stock, Ink
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -64,10 +64,28 @@ def getContacts(request):
     contacts = Contact.objects.filter(client__id = client_Id)
     return JsonResponse(list(contacts.values("id", "name")), safe = False)
 
+class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    model = Docket
+    # form_class = NewDocketForm
+    def get_form(self, form_class=NewDocketForm):
+        form = super().get_form(form_class)
+        event = self.object
+        owner = User.objects.filter(pk=event.owner.pk)
+        form.fields['owner'].queryset = owner
+        return form
+    def get_success_url(self):
+        return reverse_lazy('dockets-home')
+    
+
+
 @login_required
 def updateDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     form = NewDocketForm(instance=docket)
+    stock1 = docket.stock_1
+
 
     if request.method == "POST": #if the method is post then post the request to the DB
         form = NewDocketForm(request.POST, instance=docket)

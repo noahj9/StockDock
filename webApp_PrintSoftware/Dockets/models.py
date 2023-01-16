@@ -9,57 +9,77 @@ from invitations.utils import get_invitation_model
 
 class Client(models.Model): #database table to hold all client names
     name = models.CharField(max_length = 100)
+    def __unicode__(self):
+        return u"%i" % self.name
 
     def __str__(self):
         return self.name
+    
 
 class Contact(models.Model): #for contact names, each contact belongs to a client, each client can have >1 contact
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=20)
     email = models.EmailField()
     client = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
-
+    def __unicode__(self):
+        return u"%i" % self.name
     def __str__(self):
         return self.name
 
 class Csr(models.Model):
     name = models.CharField(max_length=100)
+    def __unicode__(self):
+        return u"%i" % self.name    
     def __str__(self):
         return self.name
 class Rep(models.Model):
     name = models.CharField(max_length=100)
     csr = models.ForeignKey(Csr, null = True, on_delete=models.SET_NULL) #foreign key means each rep can have a CSR, null means it isnt mandatory, on delete will set value to null instead of deletion
+    def __unicode__(self):
+        return u"%i" % self.name
     def __str__(self):
         return self.name    
 
 class Machine(models.Model):
     name = models.CharField(max_length=100)
     ink = models.BooleanField(default=True)
+    def __unicode__(self):
+        return u"%i" % self.name
     def __str__(self):
         return self.name
 
 class Ink(models.Model):
     name = models.CharField(max_length=100)
+    def __unicode__(self):
+        return u"%i" % self.name    
     def __str__(self):
         return self.name
 
 class Proof(models.Model):
     name = models.CharField(max_length=100)
+    def __unicode__(self):
+        return u"%i" % self.name    
     def __str__(self):
         return self.name
 
 class Stock(models.Model):
     name = models.CharField(max_length=200)
+    def __unicode__(self):
+        return u"%i" % self.name    
     def __str__(self):
         return self.name
 
 class Terms(models.Model):
     term = models.CharField(max_length=200)
+    def __unicode__(self):
+        return u"%i" % self.term    
     def __str__(self):
         return self.term
 
 class Deposit(models.Model):
     deposit = models.CharField(max_length=200)
+    def __unicode__(self):
+        return u"%i" % self.deposit    
     def __str__(self):
         return self.deposit
 
