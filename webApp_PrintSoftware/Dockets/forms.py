@@ -107,4 +107,5 @@ class NewDocketForm(ModelForm): #model form for new docket
         # self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'Inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
         #         'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'Inks_3',
         #         'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
+        self.initial['stock_1'] = '----------'
         self.fields['contact'].queryset = Contact.objects.all()
