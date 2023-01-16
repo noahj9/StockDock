@@ -457,7 +457,7 @@
         $('#id_inks_1_1').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
         $('#id_inks_1_0').click( function(){
-          if ($(this).find('option:selected').val() === "Other") {
+          if ($(this).find('option:selected').val() === "Other") { /*capital O*/
              $('#id_inks_1_1').show(); }
           else {
              $('#id_inks_1_1').hide(); $('#id_inks_1_1').val(""); }
