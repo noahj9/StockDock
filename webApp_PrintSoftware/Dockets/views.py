@@ -64,19 +64,19 @@ def getContacts(request):
     contacts = Contact.objects.filter(client__id = client_Id)
     return JsonResponse(list(contacts.values("id", "name")), safe = False)
 
-class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
-    login_url = 'login'
-    redirect_field_name = 'redirect_to'
-    model = Docket
-    # form_class = NewDocketForm
-    def get_form(self, form_class=NewDocketForm):
-        form = super().get_form(form_class)
-        docket = self.object
-        stock1 = Stock.objects.filter(name=docket.stock_1)
-        form.fields['stock_1'].queryset = stock1
-        return form
-    def get_success_url(self):
-        return reverse_lazy('dockets-home')
+# class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+#     login_url = 'login'
+#     redirect_field_name = 'redirect_to'
+#     model = Docket
+#     form_class = NewDocketForm
+#     def get_form(self, form_class=NewDocketForm):
+#         form = super().get_form(form_class)
+#         docket = self.object
+#         stock1 = Stock.objects.filter(name=docket.stock_1)
+#         form.fields['stock_1'].queryset = stock1
+#         return form
+#     def get_success_url(self):
+#        return reverse_lazy('dockets-home')
     
 
 
@@ -84,7 +84,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
 def updateDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     form = NewDocketForm(instance=docket)
-    stock1 = docket.stock_1
+    #stock1 = Stock.objects.filter(name=docket.stock_1)
 
 
     if request.method == "POST": #if the method is post then post the request to the DB
