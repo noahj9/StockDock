@@ -109,8 +109,13 @@ def deleteDocket(request, pk):
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
     client = docket.customer_name
+    terms = docket.terms
+    customer_po = docket.customer_PO
+    deposit = docket.deposit
+    rep = docket.rep
+    csr = docket.csr
     contact = Contact.objects.get(name = docket.contact)
-    path = filler.execute(model_to_dict(docket),model_to_dict(contact), client)
+    path = filler.execute(model_to_dict(docket),model_to_dict(contact), client, terms, customer_po, deposit, rep, csr)
     reverse_lazy('dockets-home')
     return FileResponse(open(path, 'rb'),content_type='application/pdf')
 

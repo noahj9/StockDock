@@ -5,7 +5,7 @@ import shutil
 import PyPDF2
 from datetime import datetime
 
-def execute(docket,contact,client):
+def execute(docket,contact,client,terms, customer_po, deposit, rep, csr):
     res =['',docket.get("date").strftime("%Y-%m-%d"),docket.get("date_required").strftime("%Y-%m-%d"),client,contact.get("name"),contact.get("phone"),contact.get("email"),
           docket.get("quote"),docket.get("deposit_amount"),docket.get("quantity_1"),docket.get("description_1"),docket.get("finished_size_1"),docket.get("stock_1"),
           docket.get("run_quantity_1"),docket.get("sheet_size_1"),docket.get("run_size_1"),docket.get("inks_1"),docket.get("instructions_1"),docket.get("bindery_1"),
@@ -14,8 +14,8 @@ def execute(docket,contact,client):
           docket.get("bindery_2"),docket.get("price_comission_2"),docket.get("file_2"),docket.get("shipping_2"),docket.get("quantity_3"),docket.get("description_3"),
           docket.get("finished_size_3"),docket.get("stock_3"),docket.get("run_quantity_3"),docket.get("sheet_size_3"),docket.get("run_size_3"),docket.get("inks_3"),
           docket.get("instructions_3"),docket.get("bindery_3"),docket.get("price_comission_3"),docket.get("file_3"),docket.get("shipping_3"),docket.get("reception_notes"),
-          docket.get("customer_PO"),docket.get("flexibility"),docket.get("machine_1"),docket.get("proof_1"),docket.get("terms"),docket.get("deposit"),docket.get("rep"),
-          docket.get("csr"),docket.get("machine_2"),docket.get("proof_2"),docket.get("machine_3"),docket.get("proof_3")] 
+          customer_po,docket.get("flexibility"),docket.get("machine_1"),docket.get("proof_1"),terms,deposit,rep,
+          csr,docket.get("machine_2"),docket.get("proof_2"),docket.get("machine_3"),docket.get("proof_3")] 
 
     path = Path(__file__).parent.resolve()
     
