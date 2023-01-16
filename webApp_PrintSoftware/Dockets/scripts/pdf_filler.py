@@ -16,7 +16,8 @@ def execute(docket,contact):
           docket.get("instructions_3"),docket.get("bindery_3"),docket.get("price_comission_3"),docket.get("file_3"),docket.get("shipping_3"),docket.get("reception_notes"),
           docket.get("customer_PO"),docket.get("flexibility"),docket.get("machine_1"),docket.get("proof_1"),docket.get("terms"),docket.get("deposit"),docket.get("rep"),
           docket.get("csr"),docket.get("machine_2"),docket.get("proof_2"),docket.get("machine_3"),docket.get("proof_3")] 
-    
+    print(docket.get("customer_name__name"))
+    print(docket.values('customer_name__name'))
     path = Path(__file__).parent.resolve()
     
     key = keygen()
