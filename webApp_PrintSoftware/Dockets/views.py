@@ -72,7 +72,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
     def get_form(self, form_class=NewDocketForm):
         form = super().get_form(form_class)
         docket = self.object
-        stock1 = Stock.objects.filter(pk=docket.stock_1.pk)
+        stock1 = Stock.objects.filter(name=docket.stock_1)
         form.fields['stock_1'].queryset = stock1
         return form
     def get_success_url(self):
