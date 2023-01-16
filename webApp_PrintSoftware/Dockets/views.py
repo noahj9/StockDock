@@ -4,7 +4,7 @@ from .forms import NewDocketForm
 from django.http import FileResponse, HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
 from calendar import HTMLCalendar
-from .models import Docket, Contact, Client, Stock, Ink
+from .models import Docket, Contact, Client, Stock, Ink, Proof
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView, UpdateView
@@ -72,7 +72,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
     def get_form(self, form_class=NewDocketForm):
         form = super().get_form(form_class)
         docket = self.object
-        stock1 = User.objects.filter(pk=docket.stock_1.pk)
+        stock1 = Stock.objects.filter(pk=docket.stock_1.pk)
         form.fields['stock_1'].queryset = stock1
         return form
     def get_success_url(self):
