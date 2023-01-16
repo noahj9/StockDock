@@ -71,9 +71,9 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
     # form_class = NewDocketForm
     def get_form(self, form_class=NewDocketForm):
         form = super().get_form(form_class)
-        event = self.object
-        owner = User.objects.filter(pk=event.owner.pk)
-        form.fields['owner'].queryset = owner
+        docket = self.object
+        stock1 = User.objects.filter(pk=docket.stock_1.pk)
+        form.fields['stock_1'].queryset = stock1
         return form
     def get_success_url(self):
         return reverse_lazy('dockets-home')
