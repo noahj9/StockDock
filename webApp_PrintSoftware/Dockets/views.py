@@ -108,8 +108,9 @@ def deleteDocket(request, pk):
 @login_required
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
+    client = Client.objects.get(id=docket.customer_name)
     contact = Contact.objects.get(name = docket.contact)
-    path = filler.execute(model_to_dict(docket),model_to_dict(contact))
+    path = filler.execute(model_to_dict(docket),model_to_dict(contact), client)
     reverse_lazy('dockets-home')
     return FileResponse(open(path, 'rb'),content_type='application/pdf')
 
