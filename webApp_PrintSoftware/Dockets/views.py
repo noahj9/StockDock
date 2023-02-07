@@ -76,7 +76,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
         except:
             pass
         else:
-            initial['proof_1'] = proof_1.ok
+            initial['proof_1'] = proof_1.pk
         return initial
     def get_success_url(self):
        return reverse_lazy('dockets-home')
