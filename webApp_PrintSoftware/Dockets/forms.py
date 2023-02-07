@@ -110,7 +110,7 @@ class NewDocketForm(ModelForm): #model form for new docket
         self.initial['stock_1'] = '----------'
         self.initial['stock_2'] = '----------'
         self.initial['stock_3'] = '----------'
-        self.initial['proof_1'] = '----------'
+        #self.initial['proof_1'] = '----------'
         self.initial['proof_2'] = '----------'
         self.initial['proof_3'] = '----------'
         self.initial['inks_1'] = 'N/A'

@@ -64,37 +64,40 @@ def getContacts(request):
     contacts = Contact.objects.filter(client__id = client_Id)
     return JsonResponse(list(contacts.values("id", "name")), safe = False)
 
-# class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
-#     login_url = 'login'
-#     redirect_field_name = 'redirect_to'
-#     model = Docket
-#     form_class = NewDocketForm
-#     def get_form(self, form_class=NewDocketForm):
-#         form = super().get_form(form_class)
-#         docket = self.object
-#         stock1 = Stock.objects.filter(name=docket.stock_1)
-#         form.fields['stock_1'].queryset = stock1
-#         return form
-#     def get_success_url(self):
-#        return reverse_lazy('dockets-home')
+class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
+    login_url = 'login'
+    redirect_field_name = 'redirect_to'
+    model = Docket
+    form_class = NewDocketForm
+    def get_initial(self):
+        initial = super().get_initial()
+        try:
+            proof_1 = self.get_object().proof_1
+        except:
+            pass
+        else:
+            initial['proof_1'] = proof_1.ok
+        return initial
+    def get_success_url(self):
+       return reverse_lazy('dockets-home')
     
 
 
-@login_required
-def updateDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
-    form = NewDocketForm(instance=docket)
-    #stock1 = Stock.objects.filter(name=docket.stock_1)
+# @login_required
+# def updateDocket(request, pk):
+#     docket = Docket.objects.get(id=pk)
+#     form = NewDocketForm(instance=docket)
+#     #stock1 = Stock.objects.filter(name=docket.stock_1)
 
 
-    if request.method == "POST": #if the method is post then post the request to the DB
-        form = NewDocketForm(request.POST, instance=docket)
-        if form.is_valid(): #check for validity
-            form.save() #save form to DB\
-            return redirect('dockets-home')
+#     if request.method == "POST": #if the method is post then post the request to the DB
+#         form = NewDocketForm(request.POST, instance=docket)
+#         if form.is_valid(): #check for validity
+#             form.save() #save form to DB\
+#             return redirect('dockets-home')
 
-    context = {'form':form}
-    return render(request, 'dockets/docket_form.html', context)
+#     context = {'form':form}
+#     return render(request, 'dockets/docket_form.html', context)
 
 @login_required
 def deleteDocket(request, pk):
