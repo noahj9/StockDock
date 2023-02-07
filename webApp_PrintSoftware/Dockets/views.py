@@ -73,10 +73,32 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
         initial = super().get_initial()
         try:
             proof_1 = self.get_object().proof_1
+            proof_2 = self.get_object().proof_2
+            proof_3 = self.get_object().proof_3
+            stock_1 = self.get_object().stock_1
+            stock_2 = self.get_object().stock_2
+            stock_3 = self.get_object().stock_3
+            inks_1 = self.get_object().inks_1
+            inks_2 = self.get_object().inks_2
+            inks_3 = self.get_object().inks_3
+            machine_1 = self.get_object().machine_1
+            machine_2 = self.get_object().machine_2
+            machine_3 = self.get_object().machine_3
         except:
             pass
         else:
             initial['proof_1'] = proof_1
+            initial['proof_2'] = proof_2
+            initial['proof_3'] = proof_3
+            initial['stock_1'] = stock_1
+            initial['stock_2'] = stock_2
+            initial['stock_3'] = stock_3
+            initial['inks_1'] = inks_1
+            initial['inks_2'] = inks_2
+            initial['inks_3'] = inks_3
+            initial['machine_1'] = machine_1
+            initial['machine_2'] = machine_2
+            initial['machine_3'] = machine_3
         return initial
     def get_success_url(self):
        return reverse_lazy('dockets-home')
