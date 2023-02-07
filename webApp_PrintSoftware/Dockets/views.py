@@ -44,7 +44,8 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
     redirect_field_name = 'redirect_to'
     model = Docket
-    form_class = NewDocketForm#(initial= {'stock_1', '----------'})
+    form_class = NewDocketForm
+    initial = {'inks_1': 'N/A'}
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
