@@ -82,7 +82,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             inks_1 = self.get_object().inks_1
             inks_2 = self.get_object().inks_2
             inks_3 = self.get_object().inks_3
-            machine_1 = self.get_object().machine_1
+            #machine_1 = self.get_object().machine_1
             machine_2 = self.get_object().machine_2
             machine_3 = self.get_object().machine_3
         except:
@@ -97,7 +97,7 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             initial['inks_1'] = inks_1
             initial['inks_2'] = inks_2
             initial['inks_3'] = inks_3
-            initial['machine_1'] = machine_1
+            #initial['machine_1'] = machine_1
             initial['machine_2'] = machine_2
             initial['machine_3'] = machine_3
         return initial
