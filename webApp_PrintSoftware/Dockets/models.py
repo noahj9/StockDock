@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 from invitations.utils import get_invitation_model
+from multiselectfield import MultiSelectField
 
 # for sending invitation to new users
 # Invitation = get_invitation_model()
@@ -102,7 +103,8 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     description_1 = models.CharField(max_length = 100)
     finished_size_1 = models.CharField(max_length = 100)
     stock_1 = models.CharField(max_length = 100)
-    machine_1 = models.CharField(max_length=200)
+    #machine_1 = models.CharField(max_length=200)
+    machine_1 = MultiSelectField(choices = list(Machine.objects.all().values_list("name", "name")))
     run_quantity_1 = models.CharField(max_length = 100, blank = True)
     sheet_size_1 = models.CharField(max_length = 100)
     run_size_1 = models.CharField(max_length = 100)
