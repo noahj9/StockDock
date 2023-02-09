@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'multiselectfield',
     "django.contrib.sites",
     "invitations",
+    'bootstrap_modal_forms',
+
 ]
 
 MIDDLEWARE = [
