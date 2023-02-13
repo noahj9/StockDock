@@ -40,7 +40,6 @@ class NewDocketForm(ModelForm): #model form for new docket
     inks_2 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
     inks_3 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
     #machine_1 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
-    machine_1 = MultiSelectField(choices = list(Machine.objects.all().values_list("name", "name")))
     machine_2 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
     machine_3 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
     flexibility = forms.ChoiceField(widget=forms.Select(attrs = {'class':'form-control'}), choices = flexibility, required= False)
