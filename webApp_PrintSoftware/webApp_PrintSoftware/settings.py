@@ -123,7 +123,7 @@ if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            "NAME":  "test",
+            "NAME":  "db",
             'USER': 'postgres',
             'PASSWORD': 'coding22',
             'HOST': 'localhost',
