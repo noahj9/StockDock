@@ -17,6 +17,7 @@ import Dockets.scripts.pdf_filler as filler
 import json
 import time
 
+
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
     redirect_field_name = 'redirect_to'
@@ -28,7 +29,6 @@ class ClientCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     redirect_field_name = 'redirect_to'
     model = Client
     fields = ['name']
-
 
 def home(request): #passes dockets to the page and creates a query set which can be searched and filtered
     docket_list = Docket.objects.all()
@@ -45,7 +45,13 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     redirect_field_name = 'redirect_to'
     model = Docket
     form_class = NewDocketForm
-    initial = {'inks_1': 'N/A', 'inks_2': 'N/A', 'inks_3': 'N/A', 'proof_1': '----------', 'proof_2': '----------', 'proof_3': '----------'}
+    initial = {'inks1_1': '-', 'inks1_2': '-', 'inks1_3': '-', 
+                'inks2_1': '-', 'inks2_2': '-', 'inks2_3': '-', 
+                'inks3_1': '-', 'inks3_2': '-', 'inks3_3': '-', 
+                'stock1_1': '-', 'stock1_2': '-', 'stock1_3': '-', 
+                'stock2_1': '-', 'stock2_2': '-', 'stock2_3': '-', 
+                'stock3_1': '-', 'stock3_2': '-', 'stock3_3': '-', 
+                'proof_1': '-', 'proof_2': '-', 'proof_3': '-'}
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
@@ -76,13 +82,25 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             proof_1 = self.get_object().proof_1
             proof_2 = self.get_object().proof_2
             proof_3 = self.get_object().proof_3
-            stock_1 = self.get_object().stock_1
-            stock_2 = self.get_object().stock_2
-            stock_3 = self.get_object().stock_3
-            inks_1 = self.get_object().inks_1
-            inks_2 = self.get_object().inks_2
-            inks_3 = self.get_object().inks_3
-            #machine_1 = self.get_object().machine_1
+            stock1_1 = self.get_object().stock1_1
+            stock1_2 = self.get_object().stock1_2
+            stock1_3 = self.get_object().stock1_3
+            stock2_1 = self.get_object().stock2_1
+            stock2_2 = self.get_object().stock2_2
+            stock2_3 = self.get_object().stock2_3
+            stock3_1 = self.get_object().stock3_1
+            stock3_2 = self.get_object().stock3_2
+            stock3_3 = self.get_object().stock3_3
+            inks1_1 = self.get_object().inks1_1
+            inks1_2 = self.get_object().inks1_2
+            inks1_3 = self.get_object().inks1_3
+            inks2_1 = self.get_object().inks2_1
+            inks2_2 = self.get_object().inks2_2
+            inks2_3 = self.get_object().inks2_3
+            inks3_1 = self.get_object().inks3_1
+            inks3_2 = self.get_object().inks3_2
+            inks3_3 = self.get_object().inks3_3
+            machine_1 = self.get_object().machine_1
             machine_2 = self.get_object().machine_2
             machine_3 = self.get_object().machine_3
         except:
@@ -91,15 +109,27 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             initial['proof_1'] = proof_1
             initial['proof_2'] = proof_2
             initial['proof_3'] = proof_3
-            initial['stock_1'] = stock_1
-            initial['stock_2'] = stock_2
-            initial['stock_3'] = stock_3
-            initial['inks_1'] = inks_1
-            initial['inks_2'] = inks_2
-            initial['inks_3'] = inks_3
-            #initial['machine_1'] = machine_1
+            initial['stock1_1'] = stock1_1
+            initial['stock1_2'] = stock1_2
+            initial['stock1_3'] = stock1_3
+            initial['stock2_1'] = stock2_1
+            initial['stock2_2'] = stock2_2
+            initial['stock2_3'] = stock2_3
+            initial['stock3_1'] = stock3_1
+            initial['stock3_2'] = stock3_2
+            initial['stock3_3'] = stock3_3
+            initial['machine_1'] = machine_1
             initial['machine_2'] = machine_2
             initial['machine_3'] = machine_3
+            initial['inks1_1'] = inks1_1
+            initial['inks1_2'] = inks1_2
+            initial['inks1_3'] = inks1_3
+            initial['inks2_1'] = inks2_1
+            initial['inks2_2'] = inks2_2
+            initial['inks2_3'] = inks2_3
+            initial['inks3_1'] = inks3_1
+            initial['inks3_2'] = inks3_2
+            initial['inks3_3'] = inks3_3
         return initial
     def get_success_url(self):
        return reverse_lazy('dockets-home')
@@ -134,6 +164,15 @@ def deleteDocket(request, pk):
 @login_required
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
+    machine1 = str(docket.machine_1)
+    machine2 = str(docket.machine_2)
+    machine3 = str(docket.machine_3)
+    stock_1 = ",".join([docket.stock1_1, docket.stock1_2, docket.stock1_3])
+    stock_2 = ",".join([docket.stock2_1, docket.stock2_2, docket.stock2_3])
+    stock_3 = ",".join([docket.stock3_1, docket.stock3_2, docket.stock3_3])
+    ink_1 = ",".join([docket.inks1_1, docket.inks1_other1, docket.inks1_2, docket.inks1_other2, docket.inks1_3, docket.inks1_other3])
+    ink_2 = ",".join([docket.inks2_1, docket.inks2_other1, docket.inks2_2, docket.inks2_other2, docket.inks2_3, docket.inks2_other3])
+    ink_3 = ",".join([docket.inks3_1, docket.inks3_other1, docket.inks3_2, docket.inks3_other2, docket.inks3_3, docket.inks3_other3])
     client = docket.customer_name
     terms = docket.terms
     customer_po = docket.customer_PO
@@ -141,7 +180,7 @@ def printDocket(req, pk):
     rep = docket.rep
     csr = docket.csr
     contact = Contact.objects.get(name = docket.contact)
-    path = filler.execute(model_to_dict(docket),model_to_dict(contact), client, terms, customer_po, deposit, rep, csr)
+    path = filler.execute(model_to_dict(docket),model_to_dict(contact), client, terms, customer_po, deposit, rep, csr, machine1, machine2, machine3, stock_1, stock_2, stock_3, ink_1, ink_2, ink_3)
     reverse_lazy('dockets-home')
     return FileResponse(open(path, 'rb'),content_type='application/pdf')
 
@@ -160,13 +199,38 @@ def addJob(request, pk):
     docket.quantity_1 = ""
     docket.description_1 = ""
     docket.finished_size_1 = ""
-    docket.stock_1 = ""
+    docket.stock1_1 = ""
+    docket.stock1_2 = ""
+    docket.stock1_3 = ""
+    docket.stock2_1 = ""
+    docket.stock2_2 = ""
+    docket.stock2_3 = ""
+    docket.stock3_1 = ""
+    docket.stock3_2 = ""
+    docket.stock3_3 = ""
+    docket.inks1_1 = ""
+    docket.inks1_2 = ""
+    docket.inks1_3 = ""
+    docket.inks2_1 = ""
+    docket.inks2_2 = ""
+    docket.inks2_3 = ""
+    docket.inks3_1 = ""
+    docket.inks3_2 = ""
+    docket.inks3_3 = ""
+    docket.inks1_other1 = ""
+    docket.inks1_other2 = ""
+    docket.inks1_other3 = ""
+    docket.inks2_other1 = ""
+    docket.inks2_other2 = ""
+    docket.inks2_other3 = ""
+    docket.inks3_other1 = ""
+    docket.inks3_other2 = ""
+    docket.inks3_other3 = ""
     docket.machine = ""
     docket.run_quantity_1 = ""
     docket.sheet_size_1 = ""
     docket.run_size_1 = ""
     docket.proof_1 = ""
-    docket.inks_1 = ""
     docket.instructions_1 = ""
     docket.bindery_1 = ""
     docket.file_1 = ""
@@ -175,13 +239,11 @@ def addJob(request, pk):
     docket.quantity_2 = ""
     docket.description_2 = ""
     docket.finished_size_2 = ""
-    docket.stock_2 = ""
     docket.machine_2 = ""
     docket.run_quantity_2 = ""
     docket.sheet_size_2 = ""
     docket.run_size_2 = ""
     docket.proof_2 = ""
-    docket.inks_2 = ""
     docket.instructions_2 = ""
     docket.bindery_2 = ""
     docket.file_2 = ""
@@ -190,13 +252,11 @@ def addJob(request, pk):
     docket.quantity_3 = ""
     docket.description_3 = ""
     docket.finished_size_3 = ""
-    docket.stock_3 = ""
     docket.machine_3 = ""
     docket.run_quantity_3 = ""
     docket.sheet_size_3 = ""
     docket.run_size_3 = ""
     docket.proof_3 = ""
-    docket.inks_3 = ""
     docket.instructions_3 = ""
     docket.bindery_3 = ""
     docket.file_3 = ""

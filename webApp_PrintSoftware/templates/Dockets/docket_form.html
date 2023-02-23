@@ -112,10 +112,6 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Stock: </label>
-                {{ form.stock_1  }}
-            </div>
             
             <div class="form-group col-md-4">
                 <label>Run Quantity: </label>
@@ -129,6 +125,21 @@
                 <label>Machine: </label>
                 <br>
                 {{ form.machine_1 }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock1_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 2 (optional): </label>
+                {{ form.stock1_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 3 (optional): </label>
+                {{ form.stock1_3  }}
             </div>
         </div>
 
@@ -151,8 +162,23 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Inks: </label>
-                {{ form.inks_1  }}
+                {{ form.inks1_1  }}
+                {{form.inks1_other1}}
             </div>
+            <div class="form-group col-md-4">
+                <label>Inks (optional): </label>
+                {{ form.inks1_2  }}
+                {{form.inks1_other2}}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Inks (optional): </label>
+                {{ form.inks1_3  }}
+                {{form.inks1_other3}}
+            </div>
+            
+        </div>
+
+        <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Bindery: </label>
                 {{ form.bindery_1 }}
@@ -207,10 +233,6 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Stock: </label>
-                {{ form.stock_2  }}
-            </div>
 
             <div class="form-group col-md-4">
                 <label>Run Quantity: </label>
@@ -227,6 +249,20 @@
             </div>
         </div>
 
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock2_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 2 (optional): </label>
+                {{ form.stock2_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 3 (optional): </label>
+                {{ form.stock2_3  }}
+            </div>
+        </div>
 
         <div class="form-row">
             <div class="form-group col-md-4">
@@ -246,8 +282,23 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Inks: </label>
-                {{ form.inks_2  }}
+                {{ form.inks2_1  }}
+                {{form.inks2_other1}}
             </div>
+            <div class="form-group col-md-4">
+                <label>Inks (optional): </label>
+                {{ form.inks2_2  }}
+                {{form.inks2_other2}}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Inks (optional): </label>
+                {{ form.inks2_3 }}
+                {{form.inks2_other3}}
+            </div>
+            
+        </div>
+
+        <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Bindery: </label>
                 {{ form.bindery_2 }}
@@ -302,10 +353,6 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Stock: </label>
-                {{ form.stock_3  }}
-            </div>
 
             <div class="form-group col-md-4">
                 <label>Run Quantity: </label>
@@ -319,6 +366,21 @@
                 <label>Machine: </label>
                 <br>
                 {{ form.machine_3 }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label>Stock: </label>
+                {{ form.stock3_1  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 2 (optional): </label>
+                {{ form.stock3_2  }}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Stock 3 (optional): </label>
+                {{ form.stock3_3  }}
             </div>
         </div>
 
@@ -341,8 +403,23 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Inks: </label>
-                {{ form.inks_3  }}
+                {{ form.inks3_1  }}
+                {{form.inks3_other1}}
             </div>
+            <div class="form-group col-md-4">
+                <label>Inks: </label>
+                {{ form.inks3_2  }}
+                {{form.inks3_other2}}
+            </div>
+            <div class="form-group col-md-4">
+                <label>Inks: </label>
+                {{ form.inks3_3  }}
+                {{form.inks3_other3}}
+            </div>
+            
+        </div>
+
+        <div class="form-row">
             <div class="form-group col-md-4">
                 <label>Bindery: </label>
                 {{ form.bindery_3 }}
@@ -453,47 +530,157 @@
     </script>
 
     <script>
-        $('#id_inks_1_0').addClass("form-control")
-        $('#id_inks_1_1').addClass("form-control")
+        $('#id_inks1_1').addClass("form-control")
+        $('#id_inks1_other1').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
-        $('#id_inks_1_0').click( function(){
+        $('#id_inks1_1').click( function(){
           if ($(this).find('option:selected').val() === "Other") { /*capital O*/
-             $('#id_inks_1_1').show(); }
+             $('#id_inks1_other1').show(); }
           else {
-             $('#id_inks_1_1').hide(); $('#id_inks_1_1').val(""); }
+             $('#id_inks1_other1').hide(); $('#id_inks1_other1').val(""); }
         });
         /* sets initial state right */
-        $('#id_inks_1_0').trigger("click");
+        $('#id_inks1_1').trigger("click");
     </script>
     <script>
-        $('#id_inks_2_0').addClass("form-control")
-        $('#id_inks_2_1').addClass("form-control")
+        $('#id_inks1_2').addClass("form-control")
+        $('#id_inks1_other2').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
-        $('#id_inks_2_0').click( function(){
-          if ($(this).find('option:selected').val() === "Other") {
-             $('#id_inks_2_1').show(); }
+        $('#id_inks1_2').click( function(){
+          if ($(this).find('option:selected').val() === "Other") { /*capital O*/
+             $('#id_inks1_other2').show(); }
           else {
-             $('#id_inks_2_1').hide(); $('#id_inks_1_1').val(""); }
+             $('#id_inks1_other2').hide(); $('#id_inks1_other2').val(""); }
         });
         /* sets initial state right */
-        $('#id_inks_2_0').trigger("click");
+        $('#id_inks1_2').trigger("click");
     </script>
     <script>
-        $('#id_inks_3_0').addClass("form-control")
-        $('#id_inks_3_1').addClass("form-control")
+        $('#id_inks1_3').addClass("form-control")
+        $('#id_inks1_other3').addClass("form-control")
         /* hide the text input box if an answer for "name" is selected via the pull-down */
-        $('#id_inks_3_0').click( function(){
-          if ($(this).find('option:selected').val() === "Other") {
-             $('#id_inks_3_1').show(); }
+        $('#id_inks1_3').click( function(){
+          if ($(this).find('option:selected').val() === "Other") { /*capital O*/
+             $('#id_inks1_other3').show(); }
           else {
-             $('#id_inks_3_1').hide(); $('#id_inks_3_1').val(""); }
+             $('#id_inks1_other3').hide(); $('#id_inks1_other3').val(""); }
         });
         /* sets initial state right */
-        $('#id_inks_3_0').trigger("click");
+        $('#id_inks1_3').trigger("click");
+    </script>
+    <script>
+        $('#id_inks2_1').addClass("form-control")
+        $('#id_inks2_other1').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks2_1').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks2_other1').show(); }
+          else {
+             $('#id_inks2_other1').hide(); $('#id_inks2_other1').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks2_1').trigger("click");
+    </script>
+    <script>
+        $('#id_inks2_2').addClass("form-control")
+        $('#id_inks2_other2').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks2_2').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks2_other2').show(); }
+          else {
+             $('#id_inks2_other2').hide(); $('#id_inks2_other2').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks2_2').trigger("click");
+    </script>
+    <script>
+        $('#id_inks2_3').addClass("form-control")
+        $('#id_inks2_other3').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks2_3').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks2_other3').show(); }
+          else {
+             $('#id_inks2_other3').hide(); $('#id_inks2_other3').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks2_3').trigger("click");
+    </script>
+    <script>
+        $('#id_inks3_1').addClass("form-control")
+        $('#id_inks3_other1').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks_3').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks3_other1').show(); }
+          else {
+             $('#id_inks3_other1').hide(); $('#id_inks3_other1').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks3_1').trigger("click");
+    </script>
+    <script>
+        $('#id_inks3_1').addClass("form-control")
+        $('#id_inks3_other1').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks3_1').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks3_other1').show(); }
+          else {
+             $('#id_inks3_other1').hide(); $('#id_inks3_other1').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks3_1').trigger("click");
+    </script>
+    <script>
+        $('#id_inks3_2').addClass("form-control")
+        $('#id_inks3_other2').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks3_2').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks3_other2').show(); }
+          else {
+             $('#id_inks3_other2').hide(); $('#id_inks3_other2').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks3_2').trigger("click");
+    </script>
+    <script>
+        $('#id_inks3_3').addClass("form-control")
+        $('#id_inks3_other3').addClass("form-control")
+        /* hide the text input box if an answer for "name" is selected via the pull-down */
+        $('#id_inks3_3').click( function(){
+          if ($(this).find('option:selected').val() === "Other") {
+             $('#id_inks3_other3').show(); }
+          else {
+             $('#id_inks3_other3').hide(); $('#id_inks3_other3').val(""); }
+        });
+        /* sets initial state right */
+        $('#id_inks3_3').trigger("click");
     </script>
     <script defer>
         $(function(){
             $("#contact-select").change(async function () {
+                const contactId = $("#contact-select").find(":selected").text();
+                $.ajax({
+                    url: '{% url "get_contactInfo_ajax"%}',
+                    dataType: "json",
+                    data: {
+                        'name': contactId,
+                        'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    success: function (data) {
+                        $("#phone").first().html(`<option selected disabled>${data.phone}</option>`);
+                        $("#email").first().html(`<option selected disabled>${data.email}</option>`);
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(function(){
+            $(document).ready(async function () {
                 const contactId = $("#contact-select").find(":selected").text();
                 $.ajax({
                     url: '{% url "get_contactInfo_ajax"%}',

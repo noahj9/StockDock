@@ -1,7 +1,7 @@
 {% extends "dockets/base.html" %}
 {% block content %}
 
-<form action="" id="contact-form" method="POST">
+<form action="" method="POST">
 	{% csrf_token %}
 	<div class="form-group">
 	{{ form.as_p }}
@@ -10,8 +10,5 @@
 
 	<input type="submit" value="Save Contact" class="btn btn-success">
 </form>
-</br>
-</br>
-<button type="button" class="btn btn-success" onclick="window.close()">Close Pop-Up</button>
 
 {% endblock content %}

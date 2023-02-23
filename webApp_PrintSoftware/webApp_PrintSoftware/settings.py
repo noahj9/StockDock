@@ -29,10 +29,15 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 # 'django-insecure-8@n@2^#^vpf@sigd8kbeexjc5#z9(qxxv=(mo*q(nsdkgmxzi9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#comment these out when testing
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-#DEVELOPMENT_MODE = True
+
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+# UN COMMENT FOR TESTING OFFLINE
+# DEVELOPMENT_MODE = True
+# DEBUG = True
 
 # Application definition
 
@@ -101,14 +106,11 @@ WSGI_APPLICATION = 'webApp_PrintSoftware.wsgi.application'
 
 if DEVELOPMENT_MODE is True:
     DATABASES = {
-        "default": {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            "NAME":  "test",
-            'USER': 'postgres',
-            'PASSWORD': 'coding22',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+        'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
+
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     if os.getenv("DATABASE_URL", None) is None:

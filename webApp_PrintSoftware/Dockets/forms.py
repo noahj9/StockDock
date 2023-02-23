@@ -7,7 +7,6 @@ from django_addanother.widgets import AddAnotherWidgetWrapper
 from .utils import OptionalChoiceField
 from multiselectfield import MultiSelectField
 
-
 # Create form for docket creation
 class NewDocketForm(ModelForm): #model form for new docket
     # machines = ((1, 'Xerox 1000'),
@@ -27,21 +26,37 @@ class NewDocketForm(ModelForm): #model form for new docket
     #         (15, 'N/A'))
     flexibility = (('Flexible', 'Flexible'),('Firm','Firm'),('N/A','N/A'))
     #make all choice fields instead of modelchoicefields
-    stock_1 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
-    stock_2 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
-    stock_3 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock1_1 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock1_2 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock1_3 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    
+    stock2_1 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock2_2 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock2_3 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
+    
+    stock3_1 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock3_2 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    stock3_3 = forms.ChoiceField(choices=list(Stock.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
+    
     proof_1 = forms.ChoiceField(choices=list(Proof.objects.all().values_list("name", "name")), widget=forms.Select(attrs = {'class': 'form-control'}))
     proof_2 = forms.ChoiceField(choices=list(Proof.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
     proof_3 = forms.ChoiceField(choices=list(Proof.objects.all().values_list("name", "name")), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
-    # inks_1 = forms.ModelChoiceField(queryset=Ink.objects.all(), required = True, widget=forms.Select(attrs = {'class': 'form-control'}))
-    # inks_2 = forms.ModelChoiceField(queryset=Ink.objects.all(), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
-    # inks_3 = forms.ModelChoiceField(queryset=Ink.objects.all(), required = False, widget=forms.Select(attrs = {'class': 'form-control'}))
-    inks_1 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
-    inks_2 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
-    inks_3 = OptionalChoiceField(choices=list(Ink.objects.all().values_list("name", "name")))
-    machine_1 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
-    machine_2 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
-    machine_3 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
+    
+    inks1_1 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks1_2 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks1_3 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+
+    inks2_1 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks2_2 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks2_3 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+
+    inks3_1 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks3_2 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+    inks3_3 = forms.ChoiceField(choices=list(Ink.objects.all().values_list("name", "name")), required = False, widget = forms.Select(attrs = {'class': 'form-control'}))
+
+    #machine_1 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
+    #machine_2 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
+    #machine_3 =forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, required = False, choices = list(Machine.objects.all().values_list("name", "name")))
     flexibility = forms.ChoiceField(widget=forms.Select(attrs = {'class':'form-control'}), choices = flexibility, required= False)
 
     class Meta:
@@ -101,6 +116,9 @@ class NewDocketForm(ModelForm): #model form for new docket
             'price_comission_3': forms.TextInput(attrs={'class':'form-control'}),
             'shipping_3': forms.TextInput(attrs={'class':'form-control'}),
             'reception_notes': forms.TextInput(attrs={'class':'form-control'}),
+            'inks1_other': forms.TextInput(attrs={'class':'form-control'}),
+            'inks2_other': forms.TextInput(attrs={'class':'form-control'}),
+            'inks3_other': forms.TextInput(attrs={'class':'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -108,13 +126,25 @@ class NewDocketForm(ModelForm): #model form for new docket
         # self.fields['quantity_2', 'description_2', 'finished_size_2', 'stock_2', 'machine_2', 'run_quantity_2', 'sheet_size_2', 'run_size_2', 'proof_2', 'Inks_2', 'instructions_2', 'bindery_2', 'file_2', 'price_comission_2', 'shipping_2',
         #         'quantity_3', 'description_3', 'finished_size_3', 'stock_3', 'machine_3', 'run_quantity_3', 'sheet_size_3', 'run_size_3', 'proof_3', 'Inks_3',
         #         'instructions_3', 'bindery_3', 'file_3', 'price_comission_3', 'shipping_3'].required = False
-        #self.initial['stock_1'] = '----------'
-        #self.initial['stock_2'] = '----------'
-        #self.initial['stock_3'] = '----------'
-        #self.initial['proof_1'] = '----------'
-        #self.initial['proof_2'] = '----------'
-        #self.initial['proof_3'] = '----------'
-        #self.initial['inks_1'] = 'N/A'
-        #self.initial['inks_2'] = 'N/A'
-        #self.initial['inks_3'] = 'N/A'
+        # self.initial['stock1_1'] = '-'
+        # self.initial['stock1_2'] = '-'
+        # self.initial['stock1_3'] = '-'
+        # self.initial['stock2_1'] = '-'
+        # self.initial['stock2_2'] = '-'
+        # self.initial['stock2_3'] = '-'
+        # self.initial['stock3_1'] = '-'
+        # self.initial['stock3_2'] = '-'
+        # self.initial['stock3_3'] = '-'
+        # self.initial['proof_1'] = '-'
+        # self.initial['proof_2'] = '-'
+        # self.initial['proof_3'] = '-'
+        # self.initial['inks1_1'] = '-'
+        # self.initial['inks1_2'] = '-'
+        # self.initial['inks1_3'] = '-'
+        # self.initial['inks2_1'] = '-'
+        # self.initial['inks2_2'] = '-'
+        # self.initial['inks2_3'] = '-'
+        # self.initial['inks3_1'] = '-'
+        # self.initial['inks3_2'] = '-'
+        # self.initial['inks3_3'] = '-'
         self.fields['contact'].queryset = Contact.objects.all()
