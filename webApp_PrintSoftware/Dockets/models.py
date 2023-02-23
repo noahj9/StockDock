@@ -84,6 +84,23 @@ class Deposit(models.Model):
     def __str__(self):
         return self.deposit
 
+MACHINE_CHOICES = (('Xerox 1000', 'Xerox 1000'),
+                    ('Xerox Nuvera', 'Xerox Nuvera'),
+                    ('Xerox Versant', 'Xerox Versant'),
+                    ('Roland', 'Roland'),
+                    ('9810', '9810'),
+                    ('DI', 'DI'),
+                    ('Komori', 'Komori'),
+                    ('Outsource', 'Outsource'),
+                    ('Design', 'Design'),
+                    ('Shippinh', 'Shipping'),
+                    ('Mailing', 'Mailing'),
+                    ('Postage', 'Postage'),
+                    ('PLS', 'PLS'),
+                    ('Other', 'Other'),
+
+                                        )
+
 class Docket(models.Model): #contains all the data for a docket to be stored in the database
     customer_name = models.ForeignKey(Client, null = True, on_delete=models.SET_NULL)
     date = models.DateField(default=datetime.date.today) #custom field form widgets
@@ -106,7 +123,7 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     stock1_1 = models.CharField(max_length = 100)
     stock1_2 = models.CharField(max_length = 100, null = True, blank = True)
     stock1_3 = models.CharField(max_length = 100, null = True, blank = True)
-    machine1 = MultiSelectField(choices = list(Machine.objects.all().values_list("name", "name")), max_length = 100, null = True)
+    machine1 = MultiSelectField(choices = MACHINE_CHOICES, max_length = 100, null = True)
     run_quantity_1 = models.CharField(max_length = 100, blank = True)
     sheet_size_1 = models.CharField(max_length = 100)
     run_size_1 = models.CharField(max_length = 100)
@@ -131,7 +148,7 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     stock2_1 = models.CharField(max_length = 100, null = True, blank = True)
     stock2_2 = models.CharField(max_length = 100, null = True, blank = True)
     stock2_3 = models.CharField(max_length = 100, null = True, blank = True)
-    machine2 = MultiSelectField(choices = list(Machine.objects.all().values_list("name", "name")), blank = True, max_length=100, null = True)
+    machine2 = MultiSelectField(choices = MACHINE_CHOICES, blank = True, max_length=100, null = True)
     run_quantity_2 = models.CharField(max_length = 100, blank = True)
     sheet_size_2 = models.CharField(max_length = 100, blank = True)
     run_size_2 = models.CharField(max_length = 100, blank = True)
@@ -155,7 +172,7 @@ class Docket(models.Model): #contains all the data for a docket to be stored in 
     stock3_1 = models.CharField(max_length = 100, null = True, blank = True)
     stock3_2 = models.CharField(max_length = 100, null = True, blank = True)
     stock3_3 = models.CharField(max_length = 100, null = True, blank = True)
-    machine3 = MultiSelectField(choices = list(Machine.objects.all().values_list("name", "name")), blank = True, max_length = 100, null= True)
+    machine3 = MultiSelectField(choices = MACHINE_CHOICES, blank = True, max_length = 100, null= True)
     run_quantity_3 = models.CharField(max_length = 100, blank = True)
     sheet_size_3 = models.CharField(max_length = 100, blank = True)
     run_size_3 = models.CharField(max_length = 100, blank = True)
