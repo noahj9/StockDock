@@ -14,16 +14,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='docket',
             name='machine_1',
-            field=multiselectfield.db.fields.MultiSelectField(choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=23),
+            field=multiselectfield.db.fields.MultiSelectField(choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=100),
         ),
         migrations.AlterField(
             model_name='docket',
             name='machine_2',
-            field=multiselectfield.db.fields.MultiSelectField(blank=True, choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=23),
+            field=multiselectfield.db.fields.MultiSelectField(blank=True, choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=100),
         ),
         migrations.AlterField(
             model_name='docket',
             name='machine_3',
-            field=multiselectfield.db.fields.MultiSelectField(blank=True, choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=23),
+            field=multiselectfield.db.fields.MultiSelectField(blank=True, choices=[('Xerox 1000', 'Xerox 1000'), ('Xerox Nuvera', 'Xerox Nuvera')], max_length=100),
         ),
     ]
