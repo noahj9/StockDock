@@ -100,9 +100,9 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             inks3_1 = self.get_object().inks3_1
             inks3_2 = self.get_object().inks3_2
             inks3_3 = self.get_object().inks3_3
-            machine_1 = self.get_object().machine_1
-            machine_2 = self.get_object().machine_2
-            machine_3 = self.get_object().machine_3
+            machine_1 = self.get_object().machine1
+            machine_2 = self.get_object().machine2
+            machine_3 = self.get_object().machine3
         except:
             pass
         else:
@@ -118,9 +118,9 @@ class UpdateDocket(LoginRequiredMixin, CreatePopupMixin, UpdateView):
             initial['stock3_1'] = stock3_1
             initial['stock3_2'] = stock3_2
             initial['stock3_3'] = stock3_3
-            initial['machine_1'] = machine_1
-            initial['machine_2'] = machine_2
-            initial['machine_3'] = machine_3
+            initial['machine1'] = machine_1
+            initial['machine2'] = machine_2
+            initial['machine3'] = machine_3
             initial['inks1_1'] = inks1_1
             initial['inks1_2'] = inks1_2
             initial['inks1_3'] = inks1_3
@@ -164,9 +164,9 @@ def deleteDocket(request, pk):
 @login_required
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
-    machine1 = str(docket.machine_1)
-    machine2 = str(docket.machine_2)
-    machine3 = str(docket.machine_3)
+    machine1 = str(docket.machine1)
+    machine2 = str(docket.machine2)
+    machine3 = str(docket.machine3)
     stock_1 = ",".join([docket.stock1_1, docket.stock1_2, docket.stock1_3])
     stock_2 = ",".join([docket.stock2_1, docket.stock2_2, docket.stock2_3])
     stock_3 = ",".join([docket.stock3_1, docket.stock3_2, docket.stock3_3])
@@ -226,7 +226,7 @@ def addJob(request, pk):
     docket.inks3_other1 = ""
     docket.inks3_other2 = ""
     docket.inks3_other3 = ""
-    docket.machine = ""
+    docket.machine1 = ""
     docket.run_quantity_1 = ""
     docket.sheet_size_1 = ""
     docket.run_size_1 = ""
@@ -239,7 +239,7 @@ def addJob(request, pk):
     docket.quantity_2 = ""
     docket.description_2 = ""
     docket.finished_size_2 = ""
-    docket.machine_2 = ""
+    docket.machine2 = ""
     docket.run_quantity_2 = ""
     docket.sheet_size_2 = ""
     docket.run_size_2 = ""
@@ -252,7 +252,7 @@ def addJob(request, pk):
     docket.quantity_3 = ""
     docket.description_3 = ""
     docket.finished_size_3 = ""
-    docket.machine_3 = ""
+    docket.machine3 = ""
     docket.run_quantity_3 = ""
     docket.sheet_size_3 = ""
     docket.run_size_3 = ""
