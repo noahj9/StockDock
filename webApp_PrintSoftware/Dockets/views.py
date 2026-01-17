@@ -64,7 +64,9 @@ def updateSubCats(req):
     return HttpResponse(json.dumps(responseObj), content_type="application/json")
 
 
+@login_required
 def getContacts(request):
+    # Authentication required to prevent unauthorized access to contact data
     data = json.loads(request.body)
     client_Id = data["id"]
     contacts = Contact.objects.filter(client__id = client_Id)
