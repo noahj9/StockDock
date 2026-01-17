@@ -101,7 +101,6 @@ def printDocket(req, pk):
     try:
         path = filler.execute(model_to_dict(docket),model_to_dict(contact))
         logger.info(f"Generated PDF for docket id {pk}")
-        reverse_lazy('dockets-home')
         return FileResponse(open(path, 'rb'),content_type='application/pdf')
     except Exception as e:
         logger.critical(f"CRITICAL: Failed to generate pdf for docket id {pk}: {str(e)}")
