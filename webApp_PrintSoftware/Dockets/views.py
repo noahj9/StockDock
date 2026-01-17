@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewDocketForm
 from django.http import FileResponse, HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
@@ -72,7 +72,8 @@ def getContacts(request):
 
 @login_required
 def updateDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent cascading failures - returns 404 instead of 500 if docket doesn't exist
+    docket = get_object_or_404(Docket, id=pk)
     form = NewDocketForm(instance=docket)
 
     if request.method == "POST": #if the method is post then post the request to the DB
@@ -86,7 +87,8 @@ def updateDocket(request, pk):
 
 @login_required
 def deleteDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent cascading failures - returns 404 instead of 500 if docket doesn't exist
+    docket = get_object_or_404(Docket, id=pk)
     if request.method =="POST":
         logger.info(f"Deleting docket id {pk}")
         docket.delete()
@@ -96,8 +98,9 @@ def deleteDocket(request, pk):
 
 @login_required
 def printDocket(req, pk):
-    docket = Docket.objects.get(id=pk)
-    contact = Contact.objects.get(name = docket.contact)
+    # Use get_object_or_404 to prevent cascading failures - returns 404 instead of 500 if objects don't exist
+    docket = get_object_or_404(Docket, id=pk)
+    contact = get_object_or_404(Contact, name=docket.contact)
     try:
         path = filler.execute(model_to_dict(docket),model_to_dict(contact))
         logger.info(f"Generated PDF for docket id {pk}")
@@ -110,14 +113,16 @@ def printDocket(req, pk):
 
 @login_required
 def cloneDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent cascading failures - returns 404 instead of 500 if docket doesn't exist
+    docket = get_object_or_404(Docket, id=pk)
     docket.pk = None
     docket.save() #save form to DB
     return redirect('dockets-home')
 
 @login_required
 def addJob(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent cascading failures - returns 404 instead of 500 if docket doesn't exist
+    docket = get_object_or_404(Docket, id=pk)
     docket.pk = None
     docket.quantity_1 = ""
     docket.description_1 = ""
