@@ -2,8 +2,6 @@ import os
 from django.shortcuts import render, redirect
 from .forms import NewDocketForm
 from django.http import FileResponse, HttpResponse, HttpResponseRedirect,JsonResponse
-import calendar
-from calendar import HTMLCalendar
 from .models import Docket, Contact, Client, Stock, Ink
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
