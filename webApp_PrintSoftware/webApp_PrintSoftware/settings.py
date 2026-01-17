@@ -96,14 +96,17 @@ WSGI_APPLICATION = 'webApp_PrintSoftware.wsgi.application'
 # }
 
 if DEVELOPMENT_MODE is True:
+    # Development database configuration using environment variables for security
+    # Set these in your local .env file or environment:
+    # DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
     DATABASES = {
         "default": {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            "NAME":  "test",
-            'USER': 'postgres',
-            'PASSWORD': 'coding22',
-            'HOST': 'localhost',
-            'PORT': '5432',
+            "NAME": os.getenv("DB_NAME", "test"),
+            'USER': os.getenv("DB_USER", "postgres"),
+            'PASSWORD': os.getenv("DB_PASSWORD"),  # Required: No default for security
+            'HOST': os.getenv("DB_HOST", "localhost"),
+            'PORT': os.getenv("DB_PORT", "5432"),
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
@@ -164,9 +167,10 @@ LOGIN_REDIRECT_URL = 'dockets-home' #the page that appears after you login
 LOGIN_URL = 'login' #login page redirect
 
 #SMTP Configuration
+# Email credentials should be set via environment variables for security
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'stockdocksoftware@gmail.com'
-EMAIL_HOST_PASSWORD = 'lnobitilznrlkpsi'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "stockdocksoftware@gmail.com")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")  # Required: Set via environment variable
