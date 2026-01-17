@@ -1,5 +1,5 @@
 import os
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewDocketForm
 from django.http import FileResponse, HttpResponse, HttpResponseRedirect,JsonResponse
 import calendar
@@ -56,7 +56,8 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
 
 def updateSubCats(req):
     data = req.GET.get('name')
-    result = Contact.objects.get(name__exact = data)
+    # Use get_object_or_404 to prevent 500 errors from cascading when contact not found
+    result = get_object_or_404(Contact, name__exact=data)
     responseObj = {
         "phone": result.phone,
         "email": result.email,
@@ -72,7 +73,8 @@ def getContacts(request):
 
 @login_required
 def updateDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent 500 errors from cascading when docket not found
+    docket = get_object_or_404(Docket, id=pk)
     form = NewDocketForm(instance=docket)
 
     if request.method == "POST": #if the method is post then post the request to the DB
@@ -86,7 +88,8 @@ def updateDocket(request, pk):
 
 @login_required
 def deleteDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent 500 errors from cascading when docket not found
+    docket = get_object_or_404(Docket, id=pk)
     if request.method =="POST":
         logger.info(f"Deleting docket id {pk}")
         docket.delete()
@@ -96,8 +99,10 @@ def deleteDocket(request, pk):
 
 @login_required
 def printDocket(req, pk):
-    docket = Docket.objects.get(id=pk)
-    contact = Contact.objects.get(name = docket.contact)
+    # Use get_object_or_404 to prevent 500 errors from cascading when docket not found
+    docket = get_object_or_404(Docket, id=pk)
+    # Use get_object_or_404 to prevent 500 errors from cascading when contact not found
+    contact = get_object_or_404(Contact, name=docket.contact)
     try:
         path = filler.execute(model_to_dict(docket),model_to_dict(contact))
         logger.info(f"Generated PDF for docket id {pk}")
@@ -110,14 +115,16 @@ def printDocket(req, pk):
 
 @login_required
 def cloneDocket(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent 500 errors from cascading when docket not found
+    docket = get_object_or_404(Docket, id=pk)
     docket.pk = None
     docket.save() #save form to DB
     return redirect('dockets-home')
 
 @login_required
 def addJob(request, pk):
-    docket = Docket.objects.get(id=pk)
+    # Use get_object_or_404 to prevent 500 errors from cascading when docket not found
+    docket = get_object_or_404(Docket, id=pk)
     docket.pk = None
     docket.quantity_1 = ""
     docket.description_1 = ""
