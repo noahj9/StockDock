@@ -170,3 +170,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'stockdocksoftware@gmail.com'
 EMAIL_HOST_PASSWORD = 'lnobitilznrlkpsi'
+
+# Temporary file cleanup patterns
+TEMP_FILE_PATTERNS = os.getenv("TEMP_FILE_PATTERNS", "filled,unfilled,archive").split(",")

@@ -16,6 +16,7 @@ from django.forms.models import model_to_dict
 import Dockets.scripts.pdf_filler as filler
 import json
 import time
+from django.conf import settings
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
@@ -35,7 +36,7 @@ def home(request): #passes dockets to the page and creates a query set which can
     myFilter = DocketFilter(request.GET, queryset=docket_list)
     docket_list = myFilter.qs
     for filename in os.listdir('./Dockets/scripts'):
-        if "filled" in filename: 
+        if any(pattern in filename for pattern in settings.TEMP_FILE_PATTERNS):
             print ("removed " + filename)
             os.remove('./Dockets/scripts/'+filename)
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
