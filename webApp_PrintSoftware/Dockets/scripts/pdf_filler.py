@@ -1,7 +1,6 @@
 import random
 from fillpdf import fillpdfs
 from pathlib import Path
-import shutil 
 import PyPDF2
 from datetime import datetime
 
