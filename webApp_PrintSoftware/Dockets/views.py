@@ -16,6 +16,9 @@ from django.forms.models import model_to_dict
 import Dockets.scripts.pdf_filler as filler
 import json
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
@@ -35,9 +38,12 @@ def home(request): #passes dockets to the page and creates a query set which can
     myFilter = DocketFilter(request.GET, queryset=docket_list)
     docket_list = myFilter.qs
     for filename in os.listdir('./Dockets/scripts'):
-        if "filled" in filename: 
-            print ("removed " + filename)
-            os.remove('./Dockets/scripts/'+filename)
+        if "filled" in filename:
+            try:
+                os.remove('./Dockets/scripts/'+filename)
+                logger.info(f"Deleted temporary PDF file: {filename}")
+            except Exception as e:
+                logger.error(f"Failed to delete temporary PDF file {filename}: {str(e)}")
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
 
 class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
@@ -82,6 +88,7 @@ def updateDocket(request, pk):
 def deleteDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     if request.method =="POST":
+        logger.info(f"Deleting docket id {pk}")
         docket.delete()
         return HttpResponseRedirect('/dockets')
     context = {'item':docket}
@@ -91,9 +98,14 @@ def deleteDocket(request, pk):
 def printDocket(req, pk):
     docket = Docket.objects.get(id=pk)
     contact = Contact.objects.get(name = docket.contact)
-    path = filler.execute(model_to_dict(docket),model_to_dict(contact))
-    reverse_lazy('dockets-home')
-    return FileResponse(open(path, 'rb'),content_type='application/pdf')
+    try:
+        path = filler.execute(model_to_dict(docket),model_to_dict(contact))
+        logger.info(f"Generated PDF for docket id {pk}")
+        reverse_lazy('dockets-home')
+        return FileResponse(open(path, 'rb'),content_type='application/pdf')
+    except Exception as e:
+        logger.critical(f"CRITICAL: Failed to generate pdf for docket id {pk}: {str(e)}")
+        raise
 
 
 @login_required
