@@ -8,7 +8,6 @@ from .models import Docket, Contact, Client, Stock, Ink
 from .filters import DocketFilter
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
-from django.views.generic import ListView
 from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
