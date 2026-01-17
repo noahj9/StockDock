@@ -13,6 +13,7 @@ from django_addanother.views import CreatePopupMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.forms.models import model_to_dict
+from django.contrib import messages
 import Dockets.scripts.pdf_filler as filler
 import json
 import time
@@ -83,6 +84,8 @@ def deleteDocket(request, pk):
     docket = Docket.objects.get(id=pk)
     if request.method =="POST":
         docket.delete()
+        # Provide user feedback on successful deletion
+        messages.success(request, 'Docket deleted successfully')
         return HttpResponseRedirect('/dockets')
     context = {'item':docket}
     return render(request, 'dockets/delete.html', context)
