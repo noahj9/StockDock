@@ -503,8 +503,30 @@
                         'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val(),
                     },
                     success: function (data) {
-                        $("#phone").first().html(`<option selected disabled>${data.phone}</option>`);
-                        $("#email").first().html(`<option selected disabled>${data.email}</option>`);
+                        // Build phone options off-DOM using DocumentFragment
+                        const phoneFragment = document.createDocumentFragment();
+                        const phoneOption = document.createElement('option');
+                        phoneOption.selected = true;
+                        phoneOption.disabled = true;
+                        phoneOption.textContent = data.phone;
+                        phoneFragment.appendChild(phoneOption);
+
+                        // Build email options off-DOM using DocumentFragment
+                        const emailFragment = document.createDocumentFragment();
+                        const emailOption = document.createElement('option');
+                        emailOption.selected = true;
+                        emailOption.disabled = true;
+                        emailOption.textContent = data.email;
+                        emailFragment.appendChild(emailOption);
+
+                        // Replace select contents in one operation
+                        const phoneSelect = document.getElementById('phone');
+                        phoneSelect.innerHTML = '';
+                        phoneSelect.appendChild(phoneFragment);
+
+                        const emailSelect = document.getElementById('email');
+                        emailSelect.innerHTML = '';
+                        emailSelect.appendChild(emailFragment);
                     }
                 });
             });
