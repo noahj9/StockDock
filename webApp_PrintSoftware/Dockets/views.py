@@ -111,8 +111,11 @@ def printDocket(req, pk):
 @login_required
 def cloneDocket(request, pk):
     docket = Docket.objects.get(id=pk)
+    original_id = pk
     docket.pk = None
     docket.save() #save form to DB
+    # Log docket cloning operation for audit trail
+    logger.info(f"Cloned docket id {original_id} to new id {docket.pk}")
     return redirect('dockets-home')
 
 @login_required
