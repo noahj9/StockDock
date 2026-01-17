@@ -13,5 +13,10 @@ from import_export.admin import ImportExportModelAdmin
 @admin.register(Stock)
 @admin.register(Deposit)
 @admin.register(Terms)
-class clientData(ImportExportModelAdmin):
+class DocketModelsAdmin(ImportExportModelAdmin):
+    """
+    Admin configuration for all Docket-related models.
+    Inherits from ImportExportModelAdmin to provide import/export functionality
+    for data management in the Django admin interface.
+    """
     pass
