@@ -1,7 +1,7 @@
-import random
+import uuid
 from fillpdf import fillpdfs
 from pathlib import Path
-import shutil 
+import shutil
 import PyPDF2
 from datetime import datetime
 
@@ -61,7 +61,7 @@ def fill(data_dict,path,key):
     fileRead.close()
     
 def keygen():
-    p1 = str(random.randint(1,1000))
-    p2 = str(random.randint(1,1000))
-    key = p1+p2
+    # Generate a unique identifier using UUID4 to prevent collisions
+    # UUID4 is cryptographically random and practically guaranteed to be unique
+    key = str(uuid.uuid4())
     return key
