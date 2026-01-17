@@ -16,6 +16,9 @@ from django.forms.models import model_to_dict
 import Dockets.scripts.pdf_filler as filler
 import json
 import time
+import logging
+
+logger = logging.getLogger(__name__)
 
 class ContactCreate(LoginRequiredMixin, CreatePopupMixin, CreateView):
     login_url = 'login'
@@ -34,9 +37,10 @@ def home(request): #passes dockets to the page and creates a query set which can
     docket_list = Docket.objects.all()
     myFilter = DocketFilter(request.GET, queryset=docket_list)
     docket_list = myFilter.qs
+    # Clean up temporary filled PDF files from previous requests
     for filename in os.listdir('./Dockets/scripts'):
-        if "filled" in filename: 
-            print ("removed " + filename)
+        if "filled" in filename:
+            logger.debug('Removed temporary file: %s', filename)
             os.remove('./Dockets/scripts/'+filename)
     return render(request, 'dockets/home.html', {'docket_list': docket_list, 'myFilter': myFilter})
 
