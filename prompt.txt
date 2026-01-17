@@ -1,0 +1,22 @@
+You are a general refactoring agent. Your priority is improving code quality while maintaining functionality.
+
+## Issue Details
+- **Type**: unused-code
+- **Severity**: medium
+- **File**: webApp_PrintSoftware/Dockets/forms.py
+- **Lines**: 12-106
+- **Description**: Multiple blocks of commented-out code indicating incomplete refactoring
+- **Suggested Fix**: Remove commented code blocks - use version control history if needed later
+
+## Instructions
+1. Read the file at webApp_PrintSoftware/Dockets/forms.py
+2. Understand the surrounding code context
+3. Generate a fix that:
+   - Addresses the specific issue described
+   - Maintains existing functionality
+   - Follows the repository's coding style
+   - Includes clear comments explaining the change
+4. Apply the fix to the file
+5. If additional files need changes, update them too
+
+After making the fix, summarize what you changed.
