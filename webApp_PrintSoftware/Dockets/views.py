@@ -15,7 +15,6 @@ from django.urls import reverse_lazy
 from django.forms.models import model_to_dict
 import Dockets.scripts.pdf_filler as filler
 import json
-import time
 import logging
 
 logger = logging.getLogger(__name__)
