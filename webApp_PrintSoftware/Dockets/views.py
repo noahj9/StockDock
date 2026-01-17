@@ -118,6 +118,7 @@ def cloneDocket(request, pk):
 @login_required
 def addJob(request, pk):
     docket = Docket.objects.get(id=pk)
+    original_docket_id = pk  # Store original docket ID for logging
     docket.pk = None
     docket.quantity_1 = ""
     docket.description_1 = ""
@@ -166,6 +167,8 @@ def addJob(request, pk):
     docket.shipping_3 = ""
     docket.reception_notes = ""
     docket.save()
+    # Log the creation of new job from existing docket
+    logger.info(f"Created new job from docket id {original_docket_id}, new docket id {docket.pk}")
     return redirect('dockets-update', pk = docket.pk)
 
 
