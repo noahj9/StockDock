@@ -78,7 +78,10 @@ def updateDocket(request, pk):
     if request.method == "POST": #if the method is post then post the request to the DB
         form = NewDocketForm(request.POST, instance=docket)
         if form.is_valid(): #check for validity
+            # Log docket update operation for audit trail
+            logger.info(f"Updating docket id {pk}")
             form.save() #save form to DB\
+            logger.info(f"Successfully updated docket id {pk}")
             return redirect('dockets-home')
 
     context = {'form':form}
