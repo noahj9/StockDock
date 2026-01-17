@@ -119,52 +119,23 @@ def cloneDocket(request, pk):
 def addJob(request, pk):
     docket = Docket.objects.get(id=pk)
     docket.pk = None
-    docket.quantity_1 = ""
-    docket.description_1 = ""
-    docket.finished_size_1 = ""
-    docket.stock_1 = ""
-    docket.machine = ""
-    docket.run_quantity_1 = ""
-    docket.sheet_size_1 = ""
-    docket.run_size_1 = ""
-    docket.proof_1 = ""
-    docket.inks_1 = ""
-    docket.instructions_1 = ""
-    docket.bindery_1 = ""
-    docket.file_1 = ""
-    docket.price_comission_1 = ""
-    docket.shipping_1 = ""
-    docket.quantity_2 = ""
-    docket.description_2 = ""
-    docket.finished_size_2 = ""
-    docket.stock_2 = ""
-    docket.machine_2 = ""
-    docket.run_quantity_2 = ""
-    docket.sheet_size_2 = ""
-    docket.run_size_2 = ""
-    docket.proof_2 = ""
-    docket.inks_2 = ""
-    docket.instructions_2 = ""
-    docket.bindery_2 = ""
-    docket.file_2 = ""
-    docket.price_comission_2 = ""
-    docket.shipping_2 = ""
-    docket.quantity_3 = ""
-    docket.description_3 = ""
-    docket.finished_size_3 = ""
-    docket.stock_3 = ""
-    docket.machine_3 = ""
-    docket.run_quantity_3 = ""
-    docket.sheet_size_3 = ""
-    docket.run_size_3 = ""
-    docket.proof_3 = ""
-    docket.inks_3 = ""
-    docket.instructions_3 = ""
-    docket.bindery_3 = ""
-    docket.file_3 = ""
-    docket.price_comission_3 = ""
-    docket.shipping_3 = ""
+
+    # Define job field base names that repeat across sections 1, 2, and 3
+    job_field_names = [
+        'quantity', 'description', 'finished_size', 'stock', 'machine',
+        'run_quantity', 'sheet_size', 'run_size', 'proof', 'inks',
+        'instructions', 'bindery', 'file', 'price_comission', 'shipping'
+    ]
+
+    # Clear all job-specific fields across sections 1-3 using loops
+    for section in range(1, 4):
+        for field_name in job_field_names:
+            field_attr = f"{field_name}_{section}"
+            setattr(docket, field_attr, "")
+
+    # Clear additional fields
     docket.reception_notes = ""
+
     docket.save()
     return redirect('dockets-update', pk = docket.pk)
 
