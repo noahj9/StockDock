@@ -54,6 +54,8 @@ class CreateDocket(LoginRequiredMixin, CreatePopupMixin, CreateView):
     def get_success_url(self):
         return reverse_lazy('dockets-home')
 
+# Requires authentication to prevent unauthorized access to contact information
+@login_required
 def updateSubCats(req):
     data = req.GET.get('name')
     result = Contact.objects.get(name__exact = data)
@@ -63,7 +65,8 @@ def updateSubCats(req):
     }
     return HttpResponse(json.dumps(responseObj), content_type="application/json")
 
-
+# Requires authentication to prevent unauthorized access to contact data
+@login_required
 def getContacts(request):
     data = json.loads(request.body)
     client_Id = data["id"]
